@@ -6,6 +6,7 @@ suspects and uncover the truth behind this murder mystery.
 The Crime Scene:
 
 The murder occurred in Sir Reginald's locked study on the third floor.
+The door was locked, and there were no signs of damage on the door.
 The study window was broken, suggesting a forced entry.
 A heavy antique vase lies shattered on the floor.
 
