@@ -1,0 +1,24 @@
+In the dimly lit, old manor of Greybrook, a dreadful murder has occurred. 
+Sir Reginald Greybrook, the wealthy patriarch of the family, was found dead in 
+his study. As the detective in charge, your task is to interview the four main 
+suspects and uncover the truth behind this murder mystery.
+
+The Crime Scene:
+
+The murder occurred in Sir Reginald's locked study on the third floor.
+The study window was broken, suggesting a forced entry.
+A heavy antique vase lies shattered on the floor.
+
+Suspects
+Lady Victoria Greybrook: Sir Reginald's wife
+Sir Edward Greybrook: Sir Reginald's son
+Miss Emily Greybrook: Sir Reginald's daughter
+Mr. Samuel Butler: The butler
+
+clues:
+1. The daughter and son were playing a game of chess when they heard a lound crash upstairs
+2. Upon closer examination of the broken window in Sir Reginald's study, there waas a blood
+   speck, indicating forced entry
+3. the butler had recently broken his leg.
+4. the butler divulges that Sir Reginald had recently signed a will, leaving all his assets
+   to lady Victoria
