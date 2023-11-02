@@ -1,0 +1,11 @@
+.container{
+    border: 1px solid black;
+    margin: 5px
+}
+.column{
+    flex: 50%;
+    margin: 5px
+}
+.row{
+    display: flex;
+}
