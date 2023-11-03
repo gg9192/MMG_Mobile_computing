@@ -1,31 +1,32 @@
 import React from "react";
 import styles from "../styles/Conversation.module.css"
 
-const Conversation = ({ suspectName }) => {
-    const handleSubmit = () => {
-        alert("Submitted!");
-    };
+/**
+ * @param {*} props 
+ * @returns a interface for the user to communicate with game characters
+ */
 
+function Conversation(props) {
     return (
         <div className={styles.container}>
-            <div className={styles.row}>
-                <div className={styles.column} id="left">
-                    <h3>Detective</h3>
-                    <div>
-                        <input type="text" placeholder="Enter text here." />
-                        <button onClick={handleSubmit}>Submit</button>
+                <div className={styles.row}>
+                    <div className={styles.column} id="left">
+                        <h3>Detective</h3>
+                        <div>
+                            <input type="text" placeholder={'to ' + props.suspectName + "..."}/>
+                            <button onClick={props.onSubmit}>Submit</button>
+                        </div>
+                    </div>
+                    
+                    <div className={styles.column} id="right">
+                        <h3>{props.suspectName}</h3>
+                            <p>
+                                {props.suspectName}'s response.
+                            </p>
                     </div>
                 </div>
-
-                <div className={styles.column} id="right">
-                    <h3>{suspectName}</h3>
-                    <p>
-                        text
-                    </p>
-                </div>
             </div>
-        </div>
     );
-};
+}
 
 export default Conversation;
