@@ -1,11 +1,11 @@
 import './App.css';
-import Conversation from './components/Conversation';
+import MainPage from './components/MainPage';
 
 function App() {
 
   return (
     <div className="App">
-      <Conversation/>
+      < MainPage></MainPage>
     </div>
   );
 }
