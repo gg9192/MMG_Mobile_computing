@@ -1,5 +1,5 @@
 import './App.css';
-import Conversation from './components/Conversation';
+import MainPage from './components/MainPage';
 
 const handleSubmit = () => {
   alert("Submitted!")
@@ -9,7 +9,7 @@ function App() {
 
   return (
     <div className="App">
-      <Conversation suspectName="Suspect" onSubmit={handleSubmit}/>
+      <MainPage></MainPage>
     </div>
   );
 }
