@@ -1,7 +1,7 @@
 import './App.css';
 import Conversation from './components/Conversation';
 
-function handleSubmit() {
+const handleSubmit = () => {
   alert("Submitted!")
 }
 
@@ -9,7 +9,7 @@ function App() {
 
   return (
     <div className="App">
-      <Conversation suspectName="Suspect" onSubmit={handleSubmit()}/>
+      <Conversation suspectName="Suspect" onSubmit={handleSubmit}/>
     </div>
   );
 }
