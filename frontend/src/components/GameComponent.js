@@ -9,7 +9,7 @@ import MainPage from "./MainPage";
 
 function GameComponent(props) {
     return (
-        <div id="game"  style={{display: "inline - block", maxWidth: "1000px"}}><MainPage></MainPage></div>
+        <div id="game"  style={{display: "inline - block", maxWidth: "1500px"}}><MainPage></MainPage></div>
     );
 }
 
