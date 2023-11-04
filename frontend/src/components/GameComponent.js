@@ -3,13 +3,13 @@ import styles from "../styles/Conversation.module.css"
 import MainPage from "./MainPage";
 /**
  * @param {*} props 
- * @returns a interface for the user to communicate with game characters
+ * @returns The component container for what is at the center of the string
  */
 
-function GameComponent(props) {
+const GameComponent = () => {
     return (
         <div id="game"  style={{display: "inline - block", width: "1200px", height: "600px", overflow: "hidden"}}><MainPage></MainPage></div>
     );
-}
 
+}
 export default GameComponent;

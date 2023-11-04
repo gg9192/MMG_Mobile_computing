@@ -6,7 +6,7 @@ import styles from "../styles/Conversation.module.css"
  * @returns a interface for the user to communicate with game characters
  */
 
-function Conversation(props) {
+const Conversation = () => {
     return (
         <div className={styles.container}>
                 <div className={styles.row}>
