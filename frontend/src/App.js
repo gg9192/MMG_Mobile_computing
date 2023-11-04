@@ -1,4 +1,5 @@
 import './App.css';
+import GameComponent from './components/GameComponent';
 import MainPage from './components/MainPage';
 
 const handleSubmit = () => {
@@ -9,7 +10,7 @@ function App() {
 
   return (
     <div className="App">
-      <MainPage></MainPage>
+      <GameComponent></GameComponent>
     </div>
   );
 }
