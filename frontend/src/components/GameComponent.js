@@ -1,6 +1,6 @@
 import React from "react";
-import styles from "../styles/Conversation.module.css"
 import MainPage from "./MainPage";
+import About from "./About"
 /**
  * @param {*} props 
  * @returns The component container for what is at the center of the string
@@ -8,7 +8,7 @@ import MainPage from "./MainPage";
 
 const GameComponent = () => {
     return (
-        <div id="game"  style={{display: "inline - block", width: "1200px", height: "600px", overflow: "hidden"}}><MainPage></MainPage></div>
+        <div id="game"  style={{display: "inline - block", width: "1200px", height: "600px", overflow: "hidden"}}><About></About></div>
     );
 
 }

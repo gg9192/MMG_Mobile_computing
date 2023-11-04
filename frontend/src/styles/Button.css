@@ -1,5 +1,6 @@
+/* this is the CSS to make the butt*/
 button {
-    --c: #229091;
+    --c: rgb(103, 65, 26);
     /* the color*/
 
     box-shadow: 0 0 0 .1em inset var(--c);
