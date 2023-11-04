@@ -1,4 +1,5 @@
 import './App.css';
+import GameComponent from './components/GameComponent';
 import MainPage from './components/MainPage';
 
 const handleSubmit = () => {
@@ -8,8 +9,14 @@ const handleSubmit = () => {
 function App() {
 
   return (
-    <div className="App">
-      <MainPage></MainPage>
+    <div className="App" style={{
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      height: '100vh',
+      
+    }}>
+      <GameComponent></GameComponent>
     </div>
   );
 }
