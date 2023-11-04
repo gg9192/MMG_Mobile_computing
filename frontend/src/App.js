@@ -9,7 +9,13 @@ const handleSubmit = () => {
 function App() {
 
   return (
-    <div className="App">
+    <div className="App" style={{
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      height: '100vh',
+      
+    }}>
       <GameComponent></GameComponent>
     </div>
   );

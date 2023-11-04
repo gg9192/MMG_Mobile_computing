@@ -9,12 +9,7 @@ import MainPage from "./MainPage";
 
 function GameComponent(props) {
     return (
-        <div style={{
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            height: '100vh',
-        }} ><MainPage></MainPage></div>
+        <div id="game"  style={{display: "inline - block", maxWidth: "1000px"}}><MainPage></MainPage></div>
     );
 }
 

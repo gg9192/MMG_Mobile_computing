@@ -1,5 +1,4 @@
 import React, {useState} from "react"
-import styles from "../styles/Conversation.module.css";
 
 const MainPage = () => {
 
@@ -7,7 +6,8 @@ const MainPage = () => {
     //responsible for the main menu 
     return (
         <div id="root">
-            <img src="MainPageBkg.jpg" width="1000px"></img>
+            <strong position="absolute" top="30px">MMG</strong>
+            <img id="img" src="MainPageBkg.jpg" style={{ objectFit: 'cover', width: "100%", height:"100%"}}></img>
         </div>
     )
 }
