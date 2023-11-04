@@ -9,8 +9,8 @@ const About = () => {
         <div style={{backgroundColor: "rgb(153, 115, 76)", height: "100%", fontSize: "4em", paddingTop: "30px"}}>
             <Button style={styles} id="back" text="back" ></Button>
             <strong>This is a game that seeks to leverage Meta's LLAMA 2</strong><br/>
-            <strong>to create more realistic AI. This project was built for Mobile</strong><br/>
-            <strong>Computing by the MMG team</strong>
+            <strong>to create more realistic AI. This project was built for Mobile Computing</strong><br/>
+            <strong> by the MMG team</strong>
         </div>
     );
 
