@@ -2,7 +2,7 @@ import React from "react";
 import styles from "../styles/Conversation.module.css"
 
 /**
- * @param {*} props 
+ * @prop props 
  * @returns a interface for the user to communicate with game characters
  */
 
