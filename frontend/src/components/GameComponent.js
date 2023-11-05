@@ -1,14 +1,18 @@
-import React from "react";
 import MainPage from "./MainPage";
-import About from "./About"
+import React, {useState} from "react"
+import GameUI from "./GameUI";
 /**
- * @prop
  * @returns The component container for what is at the center of the screen
  */
-
 const GameComponent = () => {
-    return (
-        <div id="game"  style={{display: "inline - block", width: "1200px", height: "600px", overflow: "hidden"}}><MainPage></MainPage></div>
-    );
+    const [mode, setMode] = useState("main");
+    if (mode == "main") {
+        return (
+            <div id="game" style={{display: "inline - block", width: "1200px", height: "600px", overflow: "hidden"}}><MainPage gameComponentSetMode={setMode}></MainPage></div>
+        );
+    }
+    else if (mode == "play") {
+        return (<GameUI>asd</GameUI>)
+    }
 }
 export default GameComponent;
