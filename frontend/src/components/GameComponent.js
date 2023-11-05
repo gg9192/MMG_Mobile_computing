@@ -12,7 +12,7 @@ const GameComponent = () => {
         );
     }
     else if (mode == "play") {
-        return (<GameUI>asd</GameUI>)
+        return (<div id="game" style={{display: "inline - block", width: "1200px", height: "600px", overflow: "hidden"}}><GameUI></GameUI></div>)
     }
 }
 export default GameComponent;
