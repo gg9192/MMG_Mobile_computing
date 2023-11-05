@@ -4,14 +4,20 @@ import styles from "../styles/Button.css"
 /**
  * @prop {} Text the text to be displayed 
  * @prop {} id the id selector for css style
- * @prop {} SetMode the setmode callback function that changes the mode
+ * @prop {} setMode the setmode callback function that changes the mode
+ * @prop {} setString the string that the method sets the mode to
  * @returns a interface for the user to communicate with game characters
  */
 
-const Button = ({text, id, SetMode}) => {
+const Button = ({text, id, setMode, setString}) => {
+
+    /*handles the button being clicked */
+    function handleClick() {
+        setMode(setString)
+    }
 
     return(
-        <button id={id} >{text}</button>
+        <button id={id} onClick={handleClick}>{text} </button>
     );
 
 }
