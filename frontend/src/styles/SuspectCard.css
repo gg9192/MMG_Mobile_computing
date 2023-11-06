@@ -5,12 +5,19 @@
         border-radius: 16px;
         display: flex;
         align-items: center;
-        background: white;
+        background: #ffffff;
         padding: 10px;
-        animation: slidein 5s
+        cursor: pointer;
 }
 
-@keyframes slidein {
+.hoveredCard {
+        animation: raise 1s;
+        animation-fill-mode: forwards;
+        
+}
+
+/* animation for the card*/
+@keyframes raise {
         from {
                 transform: translate(0px,0px);
                 box-shadow: 0px 0px;
