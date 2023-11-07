@@ -16,11 +16,8 @@ const SuspectPannel = ({ }) => {
                 </div>
                 <div style={{ alignItems: "center", justifyContent: "space-between", 
                     display: "flex", width: "50%", height: "65%", flexDirection: "column"
-                }}><SuspectCard imagePath={"./butler.png"} name="Butler"
-                    description="In the grand manor of Ravenscroft, Mr. Montgomery is the esteemed butler, a model 
-                    of unwavering professionalism and discretion. With his impeccably tailored attire, silver hair, 
-                    and a demeanor that exudes grace and dignity, he oversees every detail of the household with unparalleled 
-                    precision.">
+                }}><SuspectCard imagePath={"./lady-victoria.png"} name="Lady Victoria"
+                    description="">
                     </SuspectCard>
                     <SuspectCard name="Lady Victoria"></SuspectCard>
                 </div>
