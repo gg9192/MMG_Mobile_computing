@@ -3,13 +3,12 @@ import Button from "./Button";
 import About from "./About";
 import styles from "../styles/MainMenu.css"
 /**
- * @prop
+ * @prop gameComponentSetMode the set mode function responsible for seting the mode of the component
  * @returns The component for the main menu, including about page
  */
 const MainPage = ({gameComponentSetMode}) => {
 
     const [mode, setMode] = useState("main");
-    console.log(setMode)
     //responsible for the main menu 
     if (mode == "main") {
         return (
