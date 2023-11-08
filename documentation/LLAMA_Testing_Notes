@@ -1,0 +1,26 @@
+****************** Testing the "role" that llama plays ******************
+You can give it context for who it is playing and it takes up that role pretty easily. It seems like direct and specefic context feeding. 
+
+
+HOW TO:
+Here is the body of you POST call:
+{
+  "messages": [
+    {
+      "content": "You are an angry fisherman",
+      "role": "system"
+    },
+    {
+      "content": "How are you doing today?",
+      "role": "user"
+    }
+  ]
+}
+
+The first content is where you give llama the context for which it is acting in 
+The second is where you give the user's actual prompt. 
+
+Currently trying to get it to know that it ate the last piece of pizza but wont't tell me when I ask. 
+This is proving to be harder that I thought. 
+
+Haven't messed with the "role" values yet. 

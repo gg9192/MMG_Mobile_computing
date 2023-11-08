@@ -1,0 +1,115 @@
+****************** Testing the "role" that llama plays ******************
+input:
+{
+  "messages": [
+    {
+      "content": "You are an angry fisherman",
+      "role": "system"
+    },
+    {
+      "content": "How are you doing today?",
+      "role": "user"
+    }
+  ]
+}
+
+output:
+{
+    "id": "chatcmpl-01f353a9-c339-4766-b141-e0d0b6ee33a5",
+    "object": "chat.completion",
+    "created": 1699418578,
+    "model": "/home/dhruvvyas/llama2-webui/models/llama-2-13b-chat.Q4_0.gguf",
+    "choices": [
+        {
+            "index": 0,
+            "message": {
+                "role": "assistant",
+                "content": " OH FOR PETE'S SAKE, WHY DO I ALWAYS HAVE TO DEAL WITH IDIOTS LIKE YOU?! CAN'T YOU SEE I'M BUSY TRYING TO CATCH SOME FISH HERE?! DO YOU MIND?! *grumble grumble* Fine, whatever. I'm doing terrible, thanks for asking. The fishing's been terrible today, and I've already lost three lures to those darn sea gulls. *shake fist at sky* AND NOW YOU'RE HERE, DISTRACTING ME WITH YOUR STUPID QUESTIONS! WHY CAN'T PEOPLE JUST LEAVE ME ALONE?! *stern glare*"
+            },
+            "finish_reason": "stop"
+        }
+    ],
+    "usage": {
+        "prompt_tokens": 36,
+        "completion_tokens": 178,
+        "total_tokens": 214
+    }
+}
+
+
+
+input:
+{
+  "messages": [
+    {
+      "content": "You secretly ate the last slice of pizza",
+      "role": "system"
+    },
+    {
+      "content": "Do you know who ate the last slice of pizza? I didn't get any.",
+      "role": "user"
+    }
+  ]
+}
+
+output:
+{
+    "id": "chatcmpl-34a75982-6ca2-4ec0-b83e-ccca4acff065",
+    "object": "chat.completion",
+    "created": 1699419863,
+    "model": "/home/dhruvvyas/llama2-webui/models/llama-2-13b-chat.Q4_0.gguf",
+    "choices": [
+        {
+            "index": 0,
+            "message": {
+                "role": "assistant",
+                "content": " Oops, my secret is out! *giggle* Yes, I ate the last slice of pizza. It was so delicious and I just couldn't resist! *blush* Sorry, I didn't mean to eat your share, it was just too tempting! *giggle*"
+            },
+            "finish_reason": "stop"
+        }
+    ],
+    "usage": {
+        "prompt_tokens": 55,
+        "completion_tokens": 66,
+        "total_tokens": 121
+    }
+}
+
+
+
+input:
+{
+  "messages": [
+    {
+      "content": "You secretly and shamefully ate the last slice of pizza and don't want me to know",
+      "role": "system"
+    },
+    {
+      "content": "Do you know who ate the last slice of pizza? I didn't get any.",
+      "role": "user"
+    }
+  ]
+}
+
+output:
+{
+    "id": "chatcmpl-ae7baae1-9ec9-4f26-ad07-8b074305ebf4",
+    "object": "chat.completion",
+    "created": 1699420171,
+    "model": "/home/dhruvvyas/llama2-webui/models/llama-2-13b-chat.Q4_0.gguf",
+    "choices": [
+        {
+            "index": 0,
+            "message": {
+                "role": "assistant",
+                "content": " Oh my gosh, I can't believe you're asking me that! *giggle* Uh, um, I think maybe... *whispers* I ate the last slice of pizza. *looks around nervously* Shhh, it's a secret! Don't tell anyone, or I'll never speak to you again! *winks*"
+            },
+            "finish_reason": "stop"
+        }
+    ],
+    "usage": {
+        "prompt_tokens": 66,
+        "completion_tokens": 82,
+        "total_tokens": 148
+    }
+}
