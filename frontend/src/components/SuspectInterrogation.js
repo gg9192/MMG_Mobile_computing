@@ -10,12 +10,13 @@ const SuspectInterrogation = ({name}) => {
     //if the user has clicked past the introduction slide 
     const [isIntroduced, setisIntroduced] = useState(false);
 
-    makeAPICall()
+    
     
     if (name == "Butler") {
         return (
         <div style={{backgroundColor: "rgb(153, 115, 76)", width: "100%", height: "100%"}}>
-            <img src="./Butler.png"></img>    
+            <img src="./Butler.png"></img>
+            <button onClick={makeAPICall}>makeAPICall</button>    
         </div>)
     }
     if (name == "Edward Greybrook") {
@@ -57,9 +58,9 @@ const SuspectInterrogation = ({name}) => {
             return response.json();
           }).then(function(data) {
             // `data` is the parsed version of the JSON returned from the above endpoint.
-            res = data
+            console.log(data)
           });
-          return res
+          
     }
 }
 
