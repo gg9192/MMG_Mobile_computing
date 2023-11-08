@@ -28,26 +28,18 @@ const SuspectInterrogation = ({name}) => {
         
     }
 
-    /* */
+    /**
+     * 
+     * @returns the response from the server as json
+     */
     function makeAPICall() {
-        const apiUrl = 'http://localhost:3001/api/';
+        const apiUrl = 'http://localhost:3001/api/completions';
         const requestMethod = 'POST'
         const requestHeader = {
         'Content-Type': 'application/json',
         };
 
-        const requestBody = {
-        "messages": [
-            {
-            "content": "You are a helpful assistant.",
-            "role": "system"
-            },
-            {
-            "content": "What is the capital of France?",
-            "role": "user"
-            }
-        ]
-        };
+        const requestBody = '{"messages": [{"role": "system", "content": "You are a helpful assistant."},{"role": "user", "content": "Help me write a 100 words description of cat"}], "temperature": 0}'   
 
         const requestOptions = {
         method: requestMethod,
@@ -55,26 +47,20 @@ const SuspectInterrogation = ({name}) => {
         body: requestBody
         };
 
-
+        var res
 
         // Send the HTTP request using the fetch API
         fetch(apiUrl, requestOptions)
-        /*
-        .then(response => {
-            if (!response.ok) {
-            throw new Error('Network response was not ok');
-            }
+        .then(function(response) {
+            // The response is a Response instance.
+            // You parse the data into a useable format using `.json()`
             return response.json();
-        })
-        */
-        .then(data => {
-            // Handle the response data here
-            console.log(data);
-        })
-        .catch(error => {
-            console.error('Fetch error:', error);
-        });
+          }).then(function(data) {
+            // `data` is the parsed version of the JSON returned from the above endpoint.
+            res = data
+          });
+          return res
     }
-
 }
+
 export default SuspectInterrogation;
