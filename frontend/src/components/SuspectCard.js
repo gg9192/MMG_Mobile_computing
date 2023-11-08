@@ -27,6 +27,8 @@ const SuspectCard = ({name, imagePath, description}) => {
         }
     }
 
+
+
     if (hovered == false) {
         return (<div style={styles} onMouseEnter={onHover} onMouseLeave={onExit} className="card">
         <img src={imagePath} style={{height: "80%"}}></img>
