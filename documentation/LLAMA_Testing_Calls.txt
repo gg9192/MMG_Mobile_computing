@@ -113,3 +113,32 @@ output:
         "total_tokens": 148
     }
 }
+
+**********************************Testing our pre-made scenario*****************************************************************
+input:
+{"messages": [{"role": "system", "content": "You are going to be the game director for a murder mystery game. I will give you the setting, crime scene, suspects, and clues."},{"role": "assistant", "content": "Setting: In the dimly lit, old manor of Greybrook, a dreadful murder has occurred. Sir Reginald Greybrook, the wealthy patriarch of the family, was found dead in his study. As the detective in charge, your task is to interview the four main suspects and uncover the truth behind this murder mystery."}, {"role": "assistant", "content": "The Crime Scene: The murder occurred in Sir Reginald's locked study on the third floor. The door was locked, and there were no signs of damage on the door. The study window was broken, suggesting a forced entry. A heavy antique vase lies shattered on the floor."}, {"role": "assistant", "content": "Suspects: Lady Victoria Greybrook, Sir Reginald's wife. Sir Edward Greybrook, Sir Reginald's son. Miss Emily Greybrook, Sir Reginald's daughter. Mr. Samuel Butler, The butler"}, {"role": "assistant", "content": "Clues: 1. The daughter and son were playing a game of chess when they heard a lound crash upstairs 2. Upon closer examination of the broken window in Sir Reginald's study, there waas a blood speck, indicating forced entry 3. The butler had recently broken his leg. 4. The butler divulges that Sir Reginald had recently signed a will, leaving all his assets to lady Victoria"}, {"role": "user", "content": "I am the detective. I am unaware of who killed Sir Reginald. My goal is to figure out who killed Sir Reginald. I will ask each character a few questions. After I am finished asking questions, I will determine who the killer is. Your task is to answer my questions as truthfully as possible without divulging who the killer is. Understood?"}, {"role": "user", "content": "Tell me about the setting and crime scene."}], "temperature": 0}
+
+output:
+{
+    "id": "chatcmpl-370f1215-c0f9-47df-807c-eb99c85fbefe",
+    "object": "chat.completion",
+    "created": 1699484585,
+    "model": "/home/dhruvvyas/llama2-webui/models/llama-2-13b-chat.Q4_0.gguf",
+    "choices": [
+        {
+            "index": 0,
+            "message": {
+                "role": "assistant",
+                "content": " Certainly! I am ready to assist you in solving this murder mystery. The setting is the old manor of Greybrook, which is dimly lit and has a rather ominous atmosphere. The crime scene is Sir Reginald's locked study on the third floor, where he was found dead. The door was locked, and there were no signs of damage on the door, suggesting that the killer may have used a key or had inside knowledge of the manor's layout. The study window was broken, indicating a forced entry, and a heavy antique vase lies shattered on the floor.\n\nAs the detective in charge, I will begin by asking questions to each of the four main suspects: Lady Victoria Greybrook, Sir Edward Greybrook, Miss Emily Greybrook, and Mr. Samuel Butler. I will ask them about their whereabouts during the time of the murder, their relationships with Sir Reginald, and any other relevant information that might help me solve the case.\n\nPlease let me know when you are ready to begin asking questions."
+            },
+            "finish_reason": "stop"
+        }
+    ],
+    "usage": {
+        "prompt_tokens": 425,
+        "completion_tokens": 228,
+        "total_tokens": 653
+    }
+}
+
+-It wants to play the role of the detective, not sure how to stop it.
