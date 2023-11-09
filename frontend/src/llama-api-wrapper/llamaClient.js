@@ -7,18 +7,7 @@ const requestHeader = {
   'Content-Type': 'application/json',
 };
 
-const requestBody = {
-  "messages": [
-    {
-      "content": "You are a helpful assistant.",
-      "role": "system"
-    },
-    {
-      "content": "What is the capital of France?",
-      "role": "user"
-    }
-  ]
-};
+const requestBody = '{"messages": [{"content": "You are a helpful assistant.", "role": "system"}, {"content": "What is the capital of France?", "role": "user"}]}';
 
 const requestOptions = {
   method: requestMethod,
