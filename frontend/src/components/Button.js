@@ -18,7 +18,7 @@ const Button = ({text, id, setMode, setString}) => {
     }
 
     return(
-        <button id={id} onClick={handleClick}>{text} </button>
+        <button id={id} className="button" onClick={handleClick}>{text} </button>
     );
 
 }

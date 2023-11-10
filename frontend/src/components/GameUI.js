@@ -1,12 +1,16 @@
 import React, {useState} from "react";
 import SuspectPanel from "./SuspectPanel";
+import GameIntro from "./GameIntro";
 import SuspectInterrogation from "./SuspectInterrogation";
 /**
  * @returns the UI component for the game (suspects, conversation, accusation)
  */
 
 const GameUI = ({}) => {
-    const [mode, setMode] = useState("main");
+    const [mode, setMode] = useState("introduction");
+    if (mode == "introduction") {
+        return (<GameIntro setMode={setMode}></GameIntro>)
+    }
     if (mode == "main") {
     return (
     <div style={{height: "100%"}}>

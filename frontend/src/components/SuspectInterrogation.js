@@ -15,7 +15,9 @@ const SuspectInterrogation = ({name}) => {
     if (name == "Butler") {
         return (
         <div style={{backgroundColor: "rgb(153, 115, 76)", width: "100%", height: "100%"}}>
-            <img src="./Butler.png"></img>
+            <div style={{height: "100%", width: "40%", display: "flex",flexDirection: "Column", justifyContent: "center", overflow: "hidden"}} >
+                <img style={{height: "80%", width: "100%", marginLeft:"-100px",}} src="./Butler.png"></img>
+            </div>
             <button onClick={makeAPICall}>makeAPICall</button>    
         </div>)
     }
@@ -25,7 +27,7 @@ const SuspectInterrogation = ({name}) => {
     if (name == "Emily Greybrook") {
         
     }
-    if (name == "Samuel Butler") {
+    if (name == "Victoria Greybrook") {
         
     }
 
