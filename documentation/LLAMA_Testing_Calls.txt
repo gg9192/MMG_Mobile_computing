@@ -141,4 +141,82 @@ output:
     }
 }
 
--It wants to play the role of the detective, not sure how to stop it.
+-It wants to play the role of the detective, not sure how to stop it. *FIXED*
+-Each call to Llama should include first 6 messages (system, assistant, user)
+
+input:
+{"role": "user", "content": "Now I would like to ask Lady Victoria Greybook a few questions now. First off, what is your name and how do you know Sir Reginald Greybrook?"}, {"role": "user", "content": "What were you doing the night of the murder?"}, {"role": "user", "content": "Sir Reginald Greybrook just signed a will leaving all his assets to you recently. What do you know about that?"}
+
+output:
+ "content": " Ah, detective! I am Lady Victoria Greybrook, the wife of the deceased Sir Reginald Greybrook. I have known Sir Reginald for many years, and we were married for over a decade. The night of the murder, I was in my bedroom, preparing for bed. My husband had retired to his study earlier that evening, as was his usual habit. I did not see or hear anything unusual that night.\n\nAs for the will, I am aware that my husband recently signed a new will, leaving all his assets to me. However, I do not know the specific details of the will, as that information is private and confidential. I do know that my husband and I had a very loving and happy marriage, and I cannot imagine why anyone would want to harm him.\n\nI must say, detective, that I am quite shocked and saddened by my husband's tragic death. I hope that you will be able to find the person responsible and bring them to justice. Please, feel free to ask me any questions you may have. I will do my best to assist you in your investigation."
+            },
+            "finish_reason": "stop"
+        }
+    ],
+    "usage": {
+        "prompt_tokens": 470,
+        "completion_tokens": 240,
+        "total_tokens": 710
+
+-last question is always more elaborated than previous questions.
+-1 min 20 seconds
+
+input: same as last, added this
+{"role": "user", "content": "Now I would like to ask Mr. Samuel Butler a few questions. First off, what is your relationship with Sir Reginald Greybrook?"}
+
+output: "message": {
+                "role": "assistant",
+                "content": " Ah, greetings, Detective! I am Lady Victoria Greybrook, the wife of the deceased Sir Reginald Greybrook. I have known Sir Reginald for many years, and we were married for over a decade. The night of the murder, I was in my chambers, preparing for bed. My husband had retired to his study earlier that evening, as was his custom before dinner. I did not see or hear anything unusual that night.\n\nAs for the will, Sir Reginald had always been a just and fair man, and he had always intended to leave his assets to me and our children. However, I am not aware of any recent changes to the will, and I do not know why he would have signed a new one just before his death.\n\nNow, if you will excuse me, I must attend to my children. They are quite distraught after the events of last night, and they need their mother's comfort and support. Please, do not hesitate to ask me any further questions you may have."
+            },
+            "finish_reason": "stop"
+        }
+    ],
+    "usage": {
+        "prompt_tokens": 499,
+        "completion_tokens": 224,
+        "total_tokens": 723
+    }
+
+-Completely ignores new message. 
+-1 min 45 seconds
+
+input: removed messages toward the wife, replaced with
+{"role": "user", "content": "Now I would like to ask Mr. Samuel Butler a few questions. First off, what is your relationship with Sir Reginald Greybrook?"}
+
+output:
+"message": {
+                "role": "assistant",
+                "content": " Ah, hello there, detective! *adjusting my monocle* I am Mr. Samuel Butler, the butler of Greybrook Manor. I have been in service to the Greybrook family for over 20 years now, and I must say, I have had the pleasure of serving under Sir Reginald's distinguished leadership. He was a kind and fair employer, and I have always held him in high regard.\n\nNow, if you'll allow me, I must correct you on one thing. The broken window in Sir Reginald's study was not a forced entry, but rather a result of a game of chess gone awry. The daughter and son were playing a lively match, and one of them accidentally knocked over the vase, shattering it upon the floor. *clears throat* Of course, this is all hearsay, as I was in the kitchen at the time, preparing tea for the family.\n\nAs for my relationship with Sir Reginald, I must say that he was a true gentleman and a pleasure to work for. He always made sure to thank me for my service and never failed to acknowledge my dedication to the Greybrook family. *pauses* However, I must admit that I did have a slight disagreement with him a few days prior to his untimely passing. He had requested that I break one of my own antique vases to replace the one that was damaged during the chess game. I, of course, refused, as those vases hold great sentimental value to me. He did not take kindly to my refusal, but I stood my ground. *looks down* I suppose that may have left a bit of a sour taste in his mouth, but I never would have imagined that he would be taken from us so soon. *pauses again* Now, if you'll excuse me, I must attend to my duties and ensure that the rest of the manor is in order."
+            },
+            "finish_reason": "stop"
+        }
+    ],
+    "usage": {
+        "prompt_tokens": 430,
+        "completion_tokens": 430,
+        "total_tokens": 860
+    }
+
+-Goes into great detail when only given one question. 
+-2 min 54 seconds
+
+input:
+{"role": "user", "content": "Now I would like to ask Mr. Samuel Butler a few questions. First off, what is your relationship with Sir Reginald Greybrook?"}, {"role": "user", "content": "What were you doing when the murder occured?"}
+
+output:
+"message": {
+                "role": "assistant",
+                "content": " Ah, hello there, detective! *adjusts monocle* I am Mr. Samuel Butler, the butler of Greybrook Manor. My relationship with Sir Reginald Greybrook was one of utmost respect and loyalty. I have been serving this family for over 20 years now, and Sir Reginald was a kind and fair employer.\n\nOn the night of the murder, I was in my quarters, resting my injured leg. *winces slightly* I had broken my leg a few days prior while attempting to retrieve a book from the top shelf of the library. I was in my room, reading a book and enjoying a glass of whiskey, when I heard a loud crash coming from the study. I immediately knew something was amiss, so I hobbled to the study to investigate.\n\nWhen I arrived, I found the door locked and the window broken. I could see the shattered remains of the vase on the floor, and I knew something terrible had happened. I called out to Lady Victoria and Sir Edward, but they were nowhere to be found. I searched the study and found Sir Reginald lying on the floor, deceased. *pauses, looking somber* It was a terrible sight, and I knew immediately that something was amiss.\n\nNow, I must admit that I have a bit of a motive for wanting to speak with the detective. *leans in* You see, Sir Reginald had recently signed a will, leaving all his assets to Lady Victoria. I had been serving this family for many years, and I had grown quite fond of Sir Reginald. I had hoped that he would leave me a small inheritance, but alas, it seems that he did not. *looks down* But I assure you, detective, I had nothing to do with Sir Reginald's untimely demise. I am innocent, I swear it."
+            },
+            "finish_reason": "stop"
+        }
+    ],
+    "usage": {
+        "prompt_tokens": 440,
+        "completion_tokens": 412,
+        "total_tokens": 852
+    }
+
+-As seen in the questions for the wife, goes into more detail on the last question. 
+-Doesn't mention the broken window in the previous output. (Now, if you'll allow me, I must correct you on one thing. The broken window in Sir Reginald's study was not a forced entry, but rather a result of a game of chess gone awry. The daughter and son were playing a lively match, and one of them accidentally knocked over the vase, shattering it upon the floor. )
+-2 min 32 seconds
