@@ -1,5 +1,5 @@
 /* this is the CSS to make the butt*/
-button {
+.button {
     --c: rgb(103, 65, 26);
     /* the color*/
 
@@ -28,7 +28,7 @@ button:active {
 
 
 
-button {
+.button {
     font-family: system-ui, sans-serif;
     font-size: 3.5rem;
     cursor: pointer;
