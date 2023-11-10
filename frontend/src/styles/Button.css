@@ -28,7 +28,7 @@ button:active {
 
 
 
-button {
+.button {
     font-family: system-ui, sans-serif;
     font-size: 3.5rem;
     cursor: pointer;
