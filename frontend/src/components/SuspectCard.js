@@ -31,7 +31,7 @@ const SuspectCard = ({name, imagePath, description}) => {
 
     if (hovered == false) {
         return (<div style={styles} onMouseEnter={onHover} onMouseLeave={onExit} className="card">
-        <img src={imagePath} style={{height: "80%"}}></img>
+        <img src={imagePath} style={{height: "80%"}} alt={name}></img>
         <div>
             <strong>{name}</strong>
             <div>{description}</div>
@@ -40,7 +40,7 @@ const SuspectCard = ({name, imagePath, description}) => {
     }
     else {
         return (<div onMouseEnter={onHover} onMouseLeave={onExit} style={styles} className="card hoveredCard">
-        <img src={imagePath} style={{height: "80%"}}></img>
+        <img src={imagePath} style={{height: "80%"}} alt={name}></img>
         <div>
             <strong>{name}</strong>
             <div>{description}</div>
