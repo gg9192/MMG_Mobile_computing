@@ -8,12 +8,7 @@ import Button from "./Button";
     @returns the component used to interrogate the suspect
 */
 
-const SuspectInterrogation = ({name}) => {
-    //if the user has clicked past the introduction slide 
-    const [isIntroduced, setisIntroduced] = useState(false);
-
-    
-    
+const SuspectInterrogation = ({name}) => {    
     if (name == "Butler") {
         return (
         <div style={{backgroundColor: "rgb(153, 115, 76)", width: "100%", height: "100%", display: "flex", flexDirection: "columns"}}>
