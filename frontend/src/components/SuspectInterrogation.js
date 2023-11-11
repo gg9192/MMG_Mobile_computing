@@ -1,4 +1,6 @@
 import React, {useState} from "react";
+import Interrogation from "./Interrogation"
+import Button from "./Button";
 /**
     @prop name, the name of the suspect
     This is how we communicate with lamma. This is also where we make API calls to LLAMA
@@ -14,11 +16,16 @@ const SuspectInterrogation = ({name}) => {
     
     if (name == "Butler") {
         return (
-        <div style={{backgroundColor: "rgb(153, 115, 76)", width: "100%", height: "100%"}}>
-            <div style={{height: "100%", width: "40%", display: "flex",flexDirection: "Column", justifyContent: "center", overflow: "hidden"}} >
-                <img style={{height: "80%", width: "100%", marginLeft:"-100px",}} src="./Butler.png"></img>
+        <div style={{backgroundColor: "rgb(153, 115, 76)", width: "100%", height: "100%", display: "flex", flexDirection: "columns"}}>
+            <div style={{height: "100%", width: "29%", display: "flex",flexDirection: "Column", justifyContent: "center", overflow: "hidden"}} >
+                <img style={{position: "absolute", height: "40%", width: "25%", marginLeft:"-40px",marginTop: "-100px"}} src="./Butler.png"></img>
+                <div style={{position: "absolute", marginTop: "300px", marginLeft: "80px"}}>
+                    <Button text="Accuse"></Button>
+                </div>
             </div>
-            <button onClick={makeAPICall}>makeAPICall</button>    
+            <div style={{width: "71%", display: "flex", flexDirection: "rows", justifyContent: "center", alignItems: "center"}}>
+                <Interrogation></Interrogation>    
+            </div>  
         </div>)
     }
     if (name == "Edward Greybrook") {

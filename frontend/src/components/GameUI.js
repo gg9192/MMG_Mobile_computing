@@ -8,6 +8,7 @@ import SuspectInterrogation from "./SuspectInterrogation";
 
 const GameUI = ({}) => {
     const [mode, setMode] = useState("introduction");
+    
     if (mode == "introduction") {
         return (<GameIntro setMode={setMode}></GameIntro>)
     }
