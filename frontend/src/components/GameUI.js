@@ -8,6 +8,7 @@ import SuspectInterrogation from "./SuspectInterrogation";
 
 const GameUI = ({}) => {
     const [mode, setMode] = useState("introduction");
+    
     if (mode == "introduction") {
         return (<GameIntro setMode={setMode}></GameIntro>)
     }
@@ -17,8 +18,18 @@ const GameUI = ({}) => {
         <SuspectPanel setMode={setMode}></SuspectPanel>
     </div>)
     }
+    if (mode == "accuseButler") {
+        return (
+            <div style={{backgroundColor: "rgb(153, 115, 76)", width: "100%", height: "100%", 
+            display: "flex", flexDirection: "column", justifyContent: "center"}}>
+                <strong style = {{fontSize: "2em"}}>You Lose</strong>
+                <strong style = {{fontSize: "2em"}}>The correct answer was Lady Victoria</strong>
+                <strong style = {{fontSize: "2em"}}>Please reload the page to play again</strong>
+            </div>
+        )
+    }
     else {
-        return (<SuspectInterrogation name={mode}></SuspectInterrogation>)
+        return (<SuspectInterrogation name={mode} setMode={setMode}></SuspectInterrogation>)
     }
 }
 export default GameUI;
