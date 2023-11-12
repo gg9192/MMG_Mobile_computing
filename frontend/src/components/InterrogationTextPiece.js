@@ -9,7 +9,7 @@ import React from "react"
 const InterrogationTextPiece = ({index, text}) => {
     if (index % 2 == 0) {
         return (
-            <div style={{textAlign: "left", padding: "10px", backgroundColor: "rgb(156,102,68)"}}>
+            <div key={index} style={{textAlign: "left", padding: "10px", backgroundColor: "rgb(156,102,68)"}}>
                 <text>{text}</text>
             </div>
         )
