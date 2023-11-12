@@ -9,7 +9,7 @@ const InterrogationDisplay = ({messages}) => {
 
     return (
         <div style={{height: "100%", overflowY: "scroll"}}>{messages.map((text, index) => (
-            <InterrogationTextPiece text={text} index={index}></InterrogationTextPiece>
+            <InterrogationTextPiece text={text} index={index} key={text + index}></InterrogationTextPiece>
           ))}</div>
     )
 

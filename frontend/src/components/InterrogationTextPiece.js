@@ -9,15 +9,15 @@ import React from "react"
 const InterrogationTextPiece = ({index, text}) => {
     if (index % 2 == 0) {
         return (
-            <div key={index} style={{textAlign: "left", padding: "10px", backgroundColor: "rgb(156,102,68)"}}>
-                <text>{text}</text>
+            <div style={{textAlign: "left", padding: "10px", backgroundColor: "rgb(156,102,68)"}}>
+                <strong>{text}</strong>
             </div>
         )
     }
     else {
         return (
             <div style={{textAlign: "left", padding: "10px"}}>
-                <text>{text}</text>
+                <strong>{text}</strong>
             </div>
         )
     }

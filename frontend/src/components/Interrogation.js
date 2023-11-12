@@ -19,7 +19,7 @@ const Interrogation = ({name}) => {
      */
     function addText(string) {
         if (strings.length % 2 == 0) {
-            //user
+            //llama
             var newstring = "LLAMA2: " + string
             var arr = []
             for (var i = 0; i < strings.length; i += 1) {
@@ -30,12 +30,12 @@ const Interrogation = ({name}) => {
         }
         else {
             //llama
-            var newstring = "LLAMA2: " + string
+            var newstring = "User: " + string
             var arr = []
-            for (var i in strings) {
-                arr.push(i)
+            for (var i = 0; i < strings.length; i += 1) {
+                arr.push(strings[i])
             }
-            var a = arr.push(newstring)
+            arr.push(newstring)
             setstrings(arr)
         }
     }
@@ -48,13 +48,13 @@ const Interrogation = ({name}) => {
         const temp = document.getElementById('input');
         const value = temp.value
         addText(value)
-        var response = await getCompleation(value, "butler")
+        var response = await (await getCompleation(value, "butler")).json()
         console.log(response)
-        var llamaResponse  = parseResponse(response); 
-        
+            
     }
 
     function parseResponse(response) {
+        console.log(response)
         const parsedResponse = JSON.parse(response);
         const messages = parsedResponse.choices[0].message.content.split("\n\n");
         return messages;
