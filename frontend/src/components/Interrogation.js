@@ -68,7 +68,13 @@ const Interrogation = ({name}) => {
             </div>
             <div style={{height: "30px", backgroundColor: "white"}}>
                 <div style={{width: "87%", height: "100%"}}>
-                    <input id="input" type="text" name="name" placeholder="Ask a question." style={{height: "100%"}} />
+                    <input id="input" type="text" name="name" placeholder="Ask a question." 
+                    onKeyDown={(e) => {
+                        if (e.key == "Enter") {
+                            handleButtonClick()
+                        }
+                    }}
+                    style={{height: "100%"}} />
                     {/* this is cheesing the button into doing what we need, see callback*/}
                     <Button text="submit" id="submit" setMode={handleButtonClick} ></Button>
                 </div>
