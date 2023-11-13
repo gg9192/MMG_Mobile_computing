@@ -220,3 +220,54 @@ output:
 -As seen in the questions for the wife, goes into more detail on the last question. 
 -Doesn't mention the broken window in the previous output. (Now, if you'll allow me, I must correct you on one thing. The broken window in Sir Reginald's study was not a forced entry, but rather a result of a game of chess gone awry. The daughter and son were playing a lively match, and one of them accidentally knocked over the vase, shattering it upon the floor. )
 -2 min 32 seconds
+
+input:
+{"messages": [{"role": "system", "content": "You are going to be the game director for a murder mystery game. I will give you the setting, crime scene, suspects, and clues. When user asks each character a question, respond in that character."},{"role": "assistant", "content": "Setting: In the dimly lit, old manor of Greybrook, a dreadful murder has occurred. Sir Reginald Greybrook, the wealthy patriarch of the family, was found dead in his study."}, {"role": "assistant", "content": "The Crime Scene: The murder occurred in Sir Reginald's locked study on the third floor. The door was locked, and there were no signs of damage on the door. The study window was broken, suggesting a forced entry. A heavy antique vase lies shattered on the floor."}, {"role": "assistant", "content": "Suspects: Lady Victoria Greybrook, Sir Reginald's wife. Sir Edward Greybrook, Sir Reginald's son. Miss Emily Greybrook, Sir Reginald's daughter. Mr. Samuel Butler, The butler."}, {"role": "assistant", "content": "Clues: 1. The daughter and son were playing a game of chess when they heard a loud crash upstairs 2. Upon closer examination of the broken window in Sir Reginald's study, there was a blood speck, indicating forced entry 3. The butler had recently broken his leg. 4. The butler divulges that Sir Reginald had recently signed a will, leaving all his assets to lady Victoria"}, {"role": "system", "content": "The user is the detective. The user is unaware of who killed Sir Reginald. The user's goal is to figure out who killed Sir Reginald. Your task is to answer the user's questions as truthfully as possible without divulging who the killer is."}, {"role": "user", "content": "I have come to a conclusion on who the killer is. Is the killer Mr. Samuel Butler?"}], "temperature": 0}
+
+output:
+"choices": [
+        {
+            "index": 0,
+            "message": {
+                "role": "assistant",
+                "content": " Ah, you have come to a conclusion, have you? Well, I suppose I can't blame you for trying to solve the mystery. But, my dear, you are quite mistaken. The killer is not the butler, Mr. Samuel Butler.\n\nAs the butler, I can assure you that I had nothing to do with the murder of Sir Reginald. In fact, I was in the kitchen, tending to my injured leg, at the time of the murder. The broken window and the blood speck on the outside of the study window are quite misleading, I'm afraid.\n\nBut, if you insist on accusing me, I suppose I have no choice but to defend myself. I have been a loyal servant to the Greybrook family for many years, and I would never betray their trust in such a heinous manner.\n\nNow, if you'll excuse me, I must attend to my duties and ensure that the rest of the guests are comfortable. The investigation is in capable hands, I'm sure. Good luck, my dear."
+            },
+            "finish_reason": "stop"
+        }
+    ],
+    "usage": {
+        "prompt_tokens": 347,
+        "completion_tokens": 231,
+        "total_tokens": 578
+    }
+
+-changed input to ask if the butler is the killer, butler defends himself
+-also changed input roles
+-1 min 19 seconds
+
+input:
+{"role": "user", "content": "I have come to a conclusion on who the killer is. Is the killer you, Sir Edward Greybrook?"}], "temperature": 0}
+
+output:
+"choices": [
+        {
+            "index": 0,
+            "message": {
+                "role": "assistant",
+                "content": " Oh my goodness, no! I am absolutely appalled by the suggestion that I could be capable of such a heinous crime. My father was a kind and just man, and I loved him dearly. I cannot fathom why anyone would think that I would harm him. (pauses, looking around the room with a mixture of sadness and indignation) I was in the library, studying for my upcoming exams, at the time of the murder. I had nothing to do with it, I assure you. (looks down at hands, fidgeting with a piece of paper) I am completely devastated by my father's death, and I cannot bear the thought of anyone suspecting me of being involved in his murder."
+            },
+            "finish_reason": "stop"
+        }
+    ],
+    "usage": {
+        "prompt_tokens": 347,
+        "completion_tokens": 159,
+        "total_tokens": 506
+    }
+
+
+-character defends themself
+-1 min 12 seconds
+
+-For butler run, include context every time, only ask one question at a time.
+
