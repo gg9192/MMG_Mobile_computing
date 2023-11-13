@@ -128,6 +128,10 @@ export async function getCompleation(prompt, character) {
   return completion(prompt)
   }
 
+  export function parseResponse(response) {
+    return response.choices[0].message.content
+  }
+
   function buildPrompt(prompt) {
       return '{"messages": [{"role": "system", "content": "You are a helpful assistant."},{"role": "user", "content": "' + prompt + '"}], "temperature": 1}';
   }

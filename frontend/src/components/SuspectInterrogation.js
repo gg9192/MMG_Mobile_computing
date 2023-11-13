@@ -23,7 +23,7 @@ const SuspectInterrogation = ({name, setMode}) => {
                 </div>
             </div>
             <div style={{width: "71%", display: "flex", flexDirection: "rows", justifyContent: "center", alignItems: "center"}}>
-                <Interrogation></Interrogation>    
+                <Interrogation name="Butler"></Interrogation>    
             </div>  
         </div>)
     }
