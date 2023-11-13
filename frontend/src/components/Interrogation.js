@@ -2,33 +2,88 @@ import React, {useState} from "react"
 import Button from "./Button"
 import InterrogationDisplay from "./InterrogationDisplay"
 import styles from "../styles/Interrogation.css"
+import {getCompleation, parseResponse} from '../llama-api-wrapper/llamaClient';
 
-const Interrogation = ({}) => {
-    const [prompts, setPrompts] = useState([
-        "With advancements in space technology, humanity is on the brink of exploring the cosmos like never before. From planned missions to Mars to the discovery of exoplanets in the habitable zone, our understanding of the universe is expanding rapidly.",
-        "The intersection of artificial intelligence and ethics continues to be a focal point of discussion. As AI systems become more sophisticated, questions about their ethical implications, accountability, and potential impact on society are gaining prominence.",
-        "The global effort to address climate change is intensifying. From renewable energy innovations to international agreements, there's a growing recognition of the need for collective action to combat the environmental challenges facing our planet.",
-        "The field of biotechnology is witnessing groundbreaking discoveries, from gene editing technologies like CRISPR-Cas9 to advancements in personalized medicine. These developments hold the promise of revolutionizing healthcare and improving the quality of life for many.",
-        "There's a growing push for increased representation and diversity in various forms of media. From movies and TV shows to literature and music, there's a recognition of the importance of reflecting the rich tapestry of human experiences and perspectives. This shift is contributing to a more inclusive and vibrant cultural landscape.",
-        "With advancements in space technology, humanity is on the brink of exploring the cosmos like never before. From planned missions to Mars to the discovery of exoplanets in the habitable zone, our understanding of the universe is expanding rapidly.",
-        "The intersection of artificial intelligence and ethics continues to be a focal point of discussion. As AI systems become more sophisticated, questions about their ethical implications, accountability, and potential impact on society are gaining prominence.",
-        "The global effort to address climate change is intensifying. From renewable energy innovations to international agreements, there's a growing recognition of the need for collective action to combat the environmental challenges facing our planet.",
-        "The field of biotechnology is witnessing groundbreaking discoveries, from gene editing technologies like CRISPR-Cas9 to advancements in personalized medicine. These developments hold the promise of revolutionizing healthcare and improving the quality of life for many.",
-        "There's a growing push for increased representation and diversity in various forms of media. From movies and TV shows to literature and music, there's a recognition of the importance of reflecting the rich tapestry of human experiences and perspectives. This shift is contributing to a more inclusive and vibrant cultural landscape."
-    ]);
+/**
+ * see gpt-doc.txt
+ * @prop the name of the suspect
+ * @returns 
+ */
+const Interrogation = ({name}) => {
+    const [strings, setstrings] = useState([]);
+    console.log(name)
+    console.log(strings)
+    if (name == "Butler" && strings.length === 0) {
+        setstrings(
+            [
+                "LLAMA2: Greetings, Detective. I am Mr. Montgomery, the devoted butler of Ravenscroft " + 
+                "Manor. It is my utmost pleasure to assist you in any way possible as you navigate " + 
+                "the intricacies of this unfortunate situation. I must admit, the tranquility of the manor " + 
+                "has been shattered by this mysterious event. I am at your service to provide any " + 
+                "information or insight that may aid in unraveling this perplexing murder."
+            ]
+        )
+    }
+
+
+
+    /**
+     * handles the button click
+     * we don't need string
+     */
+    async function handleButtonClick(string) {
+        console.log(strings.length % 2 != 1)
+        if (strings.length % 2 != 1) {
+            // we have already sent llama a request, prevent the user from
+            //making more
+            return
+        }
+        const temp = document.getElementById('input');
+        const value = temp.value
+        temp.value = ""
+        setstrings((oldState) => {
+            var arr = []
+            for (var i = 0; i < oldState.length;i++) {
+                arr.push(oldState[i])
+            }
+            var str = "User: "
+            str += value
+            arr.push(str)
+            return arr
+        })
+        var response = await (await getCompleation(value, "butler")).json()
+        var parsedString = parseResponse(response)
+        setstrings((oldState) => {
+            var arr = []
+            for (var i = 0; i < oldState.length;i++) {
+                arr.push(oldState[i])
+            }
+            var str = "LLAMA: "
+            str += parsedString
+            arr.push(str)
+            return arr
+        })
+            
+    }
 
     
-
+        
     return (
         
         <div style={{ backgroundColor: "rgb(105,62,35)", width: "80%", height: "80%"}}>
             <div style={{height: "95%"}}>
-                <InterrogationDisplay messages={prompts}></InterrogationDisplay>
+                <InterrogationDisplay messages={strings}></InterrogationDisplay>
             </div>
             <div style={{height: "30px", backgroundColor: "white"}}>
                 <div style={{width: "87%", height: "100%"}}>
-                    <input type="text" name="name" defaultValue="Enter text here" style={{height: "100%"}} />
-                    <Button text="submit" id="submit"></Button>
+                    <input id="input" type="text" name="name" placeholder="Ask a question." 
+                    onKeyDown={(e) => {
+                        if (e.key == "Enter") {
+                            handleButtonClick()
+                        }
+                    }} style={{height: "100%"}} />
+                    {/* this is cheesing the button into doing what we need, see callback*/}
+                    <Button text="submit" id="submit" setMode={handleButtonClick} ></Button>
                 </div>
                
             </div>
