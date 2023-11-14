@@ -1,5 +1,7 @@
+import { Memory } from "./memory";
+
 /**
- * a stream of Memory objects
+ * a collection of Memory objects
  */
 class MemoryStream {
     constructor() {
