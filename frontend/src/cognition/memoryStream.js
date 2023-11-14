@@ -8,18 +8,6 @@ class MemoryStream {
 }
 
 /**
- * a snapshot record of a game character's conversations/game events
- */
-class Memory {
-    constructor(order, time, details) {
-        this.order = order      //a higher order indicates that it summarizes previous memories
-        this.time = time        //a timestamp of when the memory was formed
-        this.details = details  //a string detailing the memory
-    }
-
-}
-
-/**
  * Sends a completion to LLM asking to summarize multiple memories into one.
  * 
  * @param {MemoryStream} memStream - a MemoryStream to summarize
@@ -42,7 +30,7 @@ function retrieveByIndex(memStream, index) {
 
 /**
  * Will return a subset MemoryStream of the provided memStream from the startIndex
- * to the endIndex
+ * to the endIndex.
  * 
  * @param {MemoryStream} memStream - the MemoryStream to parse
  * @param {number} startIndex - a non-negative starting position to parse inclusively
