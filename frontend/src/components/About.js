@@ -3,6 +3,7 @@ import Button from "./Button";
 import styles from "../styles/About.css"
 
 /**
+ * @prop {function} setMode function to the set mode of the Main page
  * @returns a message about the developers in a div
  */
 

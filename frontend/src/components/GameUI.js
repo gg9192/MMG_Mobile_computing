@@ -10,15 +10,18 @@ const GameUI = ({}) => {
     const [mode, setMode] = useState("introduction");
     
     if (mode == "introduction") {
+        //this is where we introduce the game
         return (<GameIntro setMode={setMode}></GameIntro>)
     }
     if (mode == "main") {
+        //this is where the grid of 4 suspects is
     return (
     <div style={{height: "100%"}}>
         <SuspectPanel setMode={setMode}></SuspectPanel>
     </div>)
     }
     if (mode == "accuseButler") {
+        //this is where we accuse an incorrect suspect
         return (
             <div style={{backgroundColor: "rgb(153, 115, 76)", width: "100%", height: "100%", 
             display: "flex", flexDirection: "column", justifyContent: "center"}}>
@@ -29,6 +32,7 @@ const GameUI = ({}) => {
         )
     }
     else {
+        //this is where we show the character interrogation
         return (<SuspectInterrogation name={mode} setMode={setMode}></SuspectInterrogation>)
     }
 }

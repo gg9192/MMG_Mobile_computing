@@ -10,6 +10,7 @@ import {getCompleation, parseResponse} from '../llama-api-wrapper/llamaClient';
  * @returns 
  */
 const Interrogation = ({name}) => {
+    //list of strings that start with either "User" or "LLama2"
     const [strings, setstrings] = useState([]);
     console.log(name)
     console.log(strings)

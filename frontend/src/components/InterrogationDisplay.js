@@ -3,7 +3,7 @@ import InterrogationTextPiece from "./InterrogationTextPiece";
 import Loading from "./Loading";
 
 /**
- * @prop messages the list of messages
+ * @prop {list of strings} messages the list of messages
  * @returns the jsx to make it happen
  */
 const InterrogationDisplay = ({messages}) => {

@@ -2,8 +2,8 @@ import React, {useState} from "react";
 import Interrogation from "./Interrogation"
 import Button from "./Button";
 /**
-    @prop name, the name of the suspect
-    @prop setMode the setMode of 
+    @prop {string} name, the name of the suspect
+    @prop {function}setMode the setMode of 
     This is how we communicate with lamma. This is also where we make API calls to LLAMA
     for each character. This is where the magic happens boys
     @returns the component used to interrogate the suspect

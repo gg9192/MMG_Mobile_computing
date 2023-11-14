@@ -117,6 +117,7 @@ This code will print the following output to the console:
 This is because the await keyword will wait for the fetchUserData() promise to settle before returning.
  */
 /** 
+ * @param {string} prompt the string from the UI
  * gets the compleation for the given character
  * Returns a promise
 */
@@ -147,20 +148,10 @@ async function completion(prompt) {
     const requestBody = prompt
     const requestOptions = {
         method: 'POST',
-        headers: {'Content-Type': 'application/json',},
+        headers: {'Content-Type': 'application/json'},
         body: requestBody
     };
 
     return await fetch(apiUrl, requestOptions)
 }
-
-
-
-/**
- * sends llama a list of completions
- */
-function chatCompletions() {
-    //TODO: implement this function
-}
-
 
