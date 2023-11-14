@@ -3,7 +3,7 @@ import SuspectCard from "./SuspectCard";
 
 /** 
  * see ~/documentation/gpt-doc.txt
- * @param setMode the set mode function of the game component
+ * @param {function} setMode the set mode function of the game component
  * @Returns the group of suspect cards in the 4*4 grid
 */
 const SuspectPannel = ({setMode}) => {
