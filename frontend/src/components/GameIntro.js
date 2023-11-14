@@ -2,7 +2,7 @@ import React from "react";
 import Button from "./Button";
 
 /** 
- * @prop setMode setmode for GameUI
+ * @prop {function} setMode setmode for GameUI
  * This gives the user an introduction to the game
 */
 const GameIntro = ({setMode}) => {

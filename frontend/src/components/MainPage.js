@@ -7,7 +7,7 @@ import styles from "../styles/MainMenu.css"
  * @returns The component for the main menu, including about page
  */
 const MainPage = ({gameComponentSetMode}) => {
-
+    //the first thing the user sees
     const [mode, setMode] = useState("main");
     //responsible for the main menu 
     if (mode == "main") {
@@ -21,6 +21,7 @@ const MainPage = ({gameComponentSetMode}) => {
         )
     }
     else if (mode == "about") {
+        //after about button is clicked
         return (<About setMode={setMode}></About>)
     }
     else {
