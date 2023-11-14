@@ -2,11 +2,13 @@ import React from "react"
 
 /**
  * represents one piece in the text history of the interrogation
- * @prop index the index of the element
- * @prop text the text to be included
+ * @prop {int} index the index of the element
+ * @prop {string} text the text to be included
  * 
  */
 const InterrogationTextPiece = ({index, text}) => {
+    // a single div of text in the interrogation text history
+    //2 colors
     if (index % 2 == 0) {
         return (
             <div style={{textAlign: "left", padding: "10px", backgroundColor: "rgb(156,102,68)"}}>

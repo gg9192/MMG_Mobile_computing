@@ -1,12 +1,13 @@
 import React, {useState} from "react";
 import styles from "../styles/SuspectCard.css"
 /**
- * @prop name name of the suspect
- * @prop imagePath the path to the image
- * @prop description the description of the suspect
+ * @prop {string} name name of the suspect
+ * @prop {string} imagePath the file path to the image
+ * @prop {string} description the description of the suspect
  * @returns a card representing a suspect
  */
 const SuspectCard = ({name, imagePath, description}) => {
+    //if the card is hovered
     const [hovered, sethovered] = useState(false);
     /* 
     handles when the mouse hovers over the component
@@ -19,7 +20,7 @@ const SuspectCard = ({name, imagePath, description}) => {
     }
 
     /*
-    handles when the mouse leaves  the component
+    handles when the mouse leaves the component
     */
     function onExit() {
         if (hovered == true) {
