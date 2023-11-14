@@ -1,5 +1,6 @@
 import React from "react"
 import InterrogationTextPiece from "./InterrogationTextPiece";
+import Loading from "./Loading";
 
 /**
  * @prop messages the list of messages
@@ -7,11 +8,23 @@ import InterrogationTextPiece from "./InterrogationTextPiece";
  */
 const InterrogationDisplay = ({messages}) => {
 
-    return (
-        <div style={{height: "100%", overflowY: "scroll"}}>{messages.map((text, index) => (
-            <InterrogationTextPiece text={text} index={index} key={text + index}></InterrogationTextPiece>
-          ))}</div>
-    )
+    if (messages.length % 2 === 0) {
+        return (
+            <div style={{height: "100%", overflowY: "scroll"}}>{messages.map((text, index) => (
+                <InterrogationTextPiece text={text} index={index} key={text + index}></InterrogationTextPiece>
+              ))}
+              <Loading></Loading>
+              </div>
+        )
+    }
+    else {
+        return (
+            <div style={{height: "100%", overflowY: "scroll"}}>{messages.map((text, index) => (
+                <InterrogationTextPiece text={text} index={index} key={text + index}></InterrogationTextPiece>
+              ))}
+            </div>
+        )
+    }
 
 }
 
