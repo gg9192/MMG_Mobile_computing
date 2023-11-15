@@ -29,7 +29,11 @@ const Interrogation = ({name}) => {
     else if ((name == "Edward Greybook" && strings.length === 0)) {
         setstrings(
             [
-                "Welcome to Ravenscroft Manor. I am Edward Greybrook, a connoisseur of strategy and an aficionado of the ancient game of chess. Within these grand halls, I navigate life's complexities much like the intricate maneuvers of a well-played game. My mind, a canvas for meticulous planning, seeks the beauty and precision found in every move. Should you wish to uncover the mysteries that linger within these walls, perhaps my insights and strategic prowess shall aid your quest. But beware, for the secrets of this manor run deep, and not all moves on this chessboard lead to victory."
+                "Welcome to Ravenscroft Manor. I am Edward Greybrook, a connoisseur of strategy and an aficionado of the ancient game of chess. " + 
+                "Within these grand halls, I navigate life's complexities much like the intricate maneuvers of a well-played game. My mind, a " + 
+                "canvas for meticulous planning, seeks the beauty and precision found in every move. Should you wish to uncover the mysteries that " +
+                "linger within these walls, perhaps my insights and strategic prowess shall aid your quest. But beware, for the secrets of this " + 
+                "manor run deep, and not all moves on this chessboard lead to victory."
             ]
         )
     }
