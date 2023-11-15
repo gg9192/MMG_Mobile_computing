@@ -27,7 +27,7 @@ const SuspectPannel = ({setMode}) => {
                         every detail of the household with unparalleled precision."></SuspectCard>
                     </div>
                     <div onClick={() => {
-                        setMode("Emily Graybook")
+                        setMode("Emily Greybook")
                     }}>
                         <SuspectCard imagePath={"./Emily-Greybook.png"}  name="Emily Greybook (daughter)" description="In the grand 
                         manor of Ravenscroft, Emily Greybrook assumes her role as the daughter of the estate, a vision of grace and 
@@ -49,7 +49,7 @@ const SuspectPannel = ({setMode}) => {
                         </SuspectCard >
                     </div>
                     <div onClick={() => {
-                        setMode("Lady Victoria")
+                        setMode("Edward Greybook")
                     }}>
                         <SuspectCard imagePath={"./Edward-Greybook.png"} name="Edward Greybook (Son)" description="In the grand 
                         manor of Ravenscroft, Edward Greybrook stands as the enigmatic son, a master of strategy who enjoys the ancient 

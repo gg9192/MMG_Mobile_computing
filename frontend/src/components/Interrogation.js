@@ -14,6 +14,7 @@ const Interrogation = ({name}) => {
     const [strings, setstrings] = useState([]);
     console.log(name)
     console.log(strings)
+    console.log(strings.length)
     if (name == "Butler" && strings.length === 0) {
         setstrings(
             [
@@ -25,7 +26,39 @@ const Interrogation = ({name}) => {
             ]
         )
     }
+    else if ((name == "Edward Greybook" && strings.length === 0)) {
+        setstrings(
+            [
+                "Welcome to Ravenscroft Manor. I am Edward Greybrook, a connoisseur of strategy and an aficionado of the ancient game of chess. " + 
+                "Within these grand halls, I navigate life's complexities much like the intricate maneuvers of a well-played game. My mind, a " + 
+                "canvas for meticulous planning, seeks the beauty and precision found in every move. Should you wish to uncover the mysteries that " +
+                "linger within these walls, perhaps my insights and strategic prowess shagill aid your quest. But beware, for the secrets of this " + 
+                "manor run deep, and not all moves on this chessboard lead to victory."
+            ]
+        )
+    }
+    else if ((name == "Emily Greybook" && strings.length === 0)) {
+        setstrings(
+            [
+                "Greetings, dear player. I am Emily Greybrook, the daughter of Ravenscroft Manor. Within these sprawling grounds, I embody the essence " + 
+                "of grace and poise that befits the estate's lineage. My attire, a testament to timeless elegance, mirrors the aristocratic heritage I " + 
+                "represent. Adorned with raven hair cascading like a waterfall, I hold within me an enigmatic array of secrets waiting to be " + 
+                "unveiled amidst the mysteries that linger within these grand walls."
+            ]
+        )
+    }
+    else if ((name == "Lady Victoria" && strings.length === 0)) {
+        setstrings(
+            [
+                "Welcome to Ravenscroft Manor. I am Lady Victoria, its formidable mistress. Adorned in elegance, I navigate high society's secrets " + 
+                "with an enigmatic allure. Beyond the façade lies a burning desire for wealth that propels my ambitions through this labyrinth of " + 
+                "intrigue. Beware, for in these walls, secrets whisper and motivations lie buried. Will you dare to unravel the desires that drive us to " + 
+                "the edge of ambition?"
+            ]
+        )
+    }
 
+    
 
 
     /**
@@ -52,7 +85,7 @@ const Interrogation = ({name}) => {
             arr.push(str)
             return arr
         })
-        var response = await (await getCompleation(value, "butler")).json()
+        var response = await (await getCompleation(value, name)).json()
         var parsedString = parseResponse(response)
         setstrings((oldState) => {
             var arr = []
