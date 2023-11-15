@@ -47,7 +47,18 @@ const Interrogation = ({name}) => {
             ]
         )
     }
+    else if ((name == "Lady Victoria" && strings.length === 0)) {
+        setstrings(
+            [
+                "Welcome to Ravenscroft Manor. I am Lady Victoria, its formidable mistress. Adorned in elegance, I navigate high society's secrets " + 
+                "with an enigmatic allure. Beyond the façade lies a burning desire for wealth that propels my ambitions through this labyrinth of " + 
+                "intrigue. Beware, for in these walls, secrets whisper and motivations lie buried. Will you dare to unravel the desires that drive us to " + 
+                "the edge of ambition?"
+            ]
+        )
+    }
 
+    
 
 
     /**
