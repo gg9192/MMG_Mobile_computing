@@ -1,6 +1,49 @@
 import React from "react";
 import SuspectCard from "./SuspectCard";
 
+
+/**
+ * We store messages as an object that maps the name of the character to the list of conversations
+ * this also figures out if it's the User or the LLM
+ * @param {object} prevObject 
+ * @param {string} character 
+ * @param {string} message 
+ */
+export function addMessage(prevObject, character, message) {
+    if (character == "Butler") {
+        const obj = new Object()
+        obj.EdwardGreybook = prevObject.EdwardGreybook
+        obj.EmilyGreybook = prevObject.EmilyGreybook
+        obj.LadyVictoria = prevObject.LadyVictoria
+        var arr = []
+        for (var i = 0; i < prevObject.Butler.length; i ++) {
+            arr.push(prevObject.Butler[i])
+        }
+        if (prevObject.Butler.length % 2 == 0) {
+            //it's GPTs turn
+            var str = "GPT: " + message
+            arr.push(str)
+        }
+        else {
+            //its the users turn
+            var str = "User: " + message
+            arr.push(str)
+        }
+
+    }
+    else if (character == "Edward Greybook") {
+
+    }
+    else if (character == "Emily Greybook") {
+
+    }
+    else if (character == "Lady Victoria") {
+
+    }
+
+}
+
+
 /** 
  * see ~/documentation/gpt-doc.txt
  * @param {function} setMode the set mode function of the game component
