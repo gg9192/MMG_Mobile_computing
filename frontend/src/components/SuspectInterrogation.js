@@ -14,9 +14,9 @@ const SuspectInterrogation = ({name, setMode}) => {
         return (
         <div style={{backgroundColor: "rgb(153, 115, 76)", width: "100%", height: "100%", display: "flex", flexDirection: "columns"}}>
             <div style={{height: "100%", width: "29%", display: "flex",flexDirection: "Column", justifyContent: "center", overflow: "hidden"}} >
-                <img style={{position: "absolute", height: "40%", width: "25%", marginLeft:"-40px",marginTop: "-170px"}} src="./Butler.png"></img>
+                <img style={{position: "absolute", height: "40%", width: "25%", marginLeft:"30px",marginTop: "-170px"}} src="./Butler.png"></img>
                 <div style={{position: "absolute", marginTop: "220px", marginLeft: "80px"}}>
-                    <Button text="Accuse" setMode={setMode} setString="accuseButler"></Button>
+                    <Button text="Accuse" setMode={setMode} setString="accuseWrong"></Button>
                 </div>
                 <div style={{position: "absolute", marginTop: "400px", marginLeft: "110px"}}>
                     <Button text="Back" setMode={setMode} setString="main"></Button>
@@ -27,8 +27,21 @@ const SuspectInterrogation = ({name, setMode}) => {
             </div>  
         </div>)
     }
-    if (name == "Edward Greybrook") {
-        
+    if (name == "Edward Greybook") {
+        return (<div style={{backgroundColor: "rgb(153, 115, 76)", width: "100%", height: "100%", display: "flex", flexDirection: "columns"}}>
+            <div style={{height: "100%", width: "29%", display: "flex",flexDirection: "Column", justifyContent: "center", overflow: "hidden"}} >
+                <img style={{position: "absolute", height: "38%", width: "19%", marginLeft:"30px",marginTop: "-170px"}} src="./Edward-Greybook.png"></img>
+                <div style={{position: "absolute", marginTop: "220px", marginLeft: "80px"}}>
+                    <Button text="Accuse" setMode={setMode} setString="accuseWrong"></Button>
+                </div>
+                <div style={{position: "absolute", marginTop: "400px", marginLeft: "110px"}}>
+                    <Button text="Back" setMode={setMode} setString="main"></Button>
+                </div>
+            </div>
+            <div style={{width: "71%", display: "flex", flexDirection: "rows", justifyContent: "center", alignItems: "center"}}>
+                <Interrogation name="Edward Greybook"></Interrogation>    
+            </div>  
+        </div>)
     }
     if (name == "Emily Greybrook") {
         

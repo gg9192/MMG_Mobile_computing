@@ -14,6 +14,7 @@ const Interrogation = ({name}) => {
     const [strings, setstrings] = useState([]);
     console.log(name)
     console.log(strings)
+    console.log(strings.length)
     if (name == "Butler" && strings.length === 0) {
         setstrings(
             [
@@ -22,6 +23,13 @@ const Interrogation = ({name}) => {
                 "the intricacies of this unfortunate situation. I must admit, the tranquility of the manor " + 
                 "has been shattered by this mysterious event. I am at your service to provide any " + 
                 "information or insight that may aid in unraveling this perplexing murder."
+            ]
+        )
+    }
+    else if ((name == "Edward Greybook" && strings.length === 0)) {
+        setstrings(
+            [
+                "Welcome to Ravenscroft Manor. I am Edward Greybrook, a connoisseur of strategy and an aficionado of the ancient game of chess. Within these grand halls, I navigate life's complexities much like the intricate maneuvers of a well-played game. My mind, a canvas for meticulous planning, seeks the beauty and precision found in every move. Should you wish to uncover the mysteries that linger within these walls, perhaps my insights and strategic prowess shall aid your quest. But beware, for the secrets of this manor run deep, and not all moves on this chessboard lead to victory."
             ]
         )
     }
@@ -52,7 +60,7 @@ const Interrogation = ({name}) => {
             arr.push(str)
             return arr
         })
-        var response = await (await getCompleation(value, "butler")).json()
+        var response = await (await getCompleation(value, name)).json()
         var parsedString = parseResponse(response)
         setstrings((oldState) => {
             var arr = []

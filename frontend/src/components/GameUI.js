@@ -20,7 +20,7 @@ const GameUI = ({}) => {
         <SuspectPanel setMode={setMode}></SuspectPanel>
     </div>)
     }
-    if (mode == "accuseButler") {
+    if (mode == "accuseWrong") {
         //this is where we accuse an incorrect suspect
         return (
             <div style={{backgroundColor: "rgb(153, 115, 76)", width: "100%", height: "100%", 
