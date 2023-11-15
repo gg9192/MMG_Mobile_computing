@@ -32,8 +32,18 @@ const Interrogation = ({name}) => {
                 "Welcome to Ravenscroft Manor. I am Edward Greybrook, a connoisseur of strategy and an aficionado of the ancient game of chess. " + 
                 "Within these grand halls, I navigate life's complexities much like the intricate maneuvers of a well-played game. My mind, a " + 
                 "canvas for meticulous planning, seeks the beauty and precision found in every move. Should you wish to uncover the mysteries that " +
-                "linger within these walls, perhaps my insights and strategic prowess shall aid your quest. But beware, for the secrets of this " + 
+                "linger within these walls, perhaps my insights and strategic prowess shagill aid your quest. But beware, for the secrets of this " + 
                 "manor run deep, and not all moves on this chessboard lead to victory."
+            ]
+        )
+    }
+    else if ((name == "Emily Greybook" && strings.length === 0)) {
+        setstrings(
+            [
+                "Greetings, dear player. I am Emily Greybrook, the daughter of Ravenscroft Manor. Within these sprawling grounds, I embody the essence " + 
+                "of grace and poise that befits the estate's lineage. My attire, a testament to timeless elegance, mirrors the aristocratic heritage I " + 
+                "represent. Adorned with raven hair cascading like a waterfall, I hold within me an enigmatic array of secrets waiting to be " + 
+                "unveiled amidst the mysteries that linger within these grand walls."
             ]
         )
     }
