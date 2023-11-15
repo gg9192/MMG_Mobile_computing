@@ -13,7 +13,6 @@ const SuspectCard = ({name, imagePath, description}) => {
     handles when the mouse hovers over the component
     */
     function onHover() {
-        console.log("a")
         if (hovered == false) {
             sethovered(true)
         }

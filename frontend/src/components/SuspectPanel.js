@@ -1,10 +1,47 @@
-import React from "react";
+import React, {useState} from "react";
 import SuspectCard from "./SuspectCard";
+import SuspectInterrogation from "./SuspectInterrogation";
 
+/**
+ * Builds the initial state
+ */
+function buildInitialState() {
+    const obj = new Object()
+    obj.Butler = [
+        "LLAMA2: Greetings, Detective. I am Mr. Montgomery, the devoted butler of Ravenscroft " + 
+        "Manor. It is my utmost pleasure to assist you in any way possible as you navigate " + 
+        "the intricacies of this unfortunate situation. I must admit, the tranquility of the manor " + 
+        "has been shattered by this mysterious event. I am at your service to provide any " + 
+        "information or insight that may aid in unraveling this perplexing murder."
+    ]
+    obj.EdwardGreybook = [
+        "Welcome to Ravenscroft Manor. I am Edward Greybrook, a connoisseur of strategy and an aficionado of the ancient game of chess. " + 
+        "Within these grand halls, I navigate life's complexities much like the intricate maneuvers of a well-played game. My mind, a " + 
+        "canvas for meticulous planning, seeks the beauty and precision found in every move. Should you wish to uncover the mysteries that " +
+        "linger within these walls, perhaps my insights and strategic prowess shagill aid your quest. But beware, for the secrets of this " + 
+        "manor run deep, and not all moves on this chessboard lead to victory."             
+    ]
+    obj.EmilyGreybook = [
+        "Greetings, dear player. I am Emily Greybrook, the daughter of Ravenscroft Manor. Within these sprawling grounds, I embody the essence " + 
+        "of grace and poise that befits the estate's lineage. My attire, a testament to timeless elegance, mirrors the aristocratic heritage I " + 
+        "represent. Adorned with raven hair cascading like a waterfall, I hold within me an enigmatic array of secrets waiting to be " + 
+        "unveiled amidst the mysteries that linger within these grand walls."
+    ]
+    obj.LadyVictoria = [
+    "Welcome to Ravenscroft Manor. I am Lady Victoria, its formidable mistress. Adorned in elegance, I navigate high society's secrets " + 
+    "with an enigmatic allure. Beyond the façade lies a burning desire for wealth that propels my ambitions through this labyrinth of " + 
+    "intrigue. Beware, for in these walls, secrets whisper and motivations lie buried. Will you dare to unravel the desires that drive us to " + 
+    "the edge of ambition?"
+    ]
+    return obj
+}
+
+const init = buildInitialState()
 
 /**
  * We store messages as an object that maps the name of the character to the list of conversations
- * this also figures out if it's the User or the LLM. This is 
+ * this also figures out if it's the User or the LLM. This is for the arrow function for usestate
+ * this is pure (stateless)
  * @param {object} prevObject 
  * @param {string} character 
  * @param {string} message 
@@ -88,9 +125,13 @@ export function addMessage(prevObject, character, message) {
  * @param {function} setMode the set mode function of the game component
  * @Returns the group of suspect cards in the 4*4 grid
 */
-const SuspectPannel = ({setMode}) => {
-
-    return (
+const SuspectPannel = () => {
+    //the state that decides what to display
+    const [mode, setMode] = useState("main");
+    //the state that holds the conversation
+    const [conversationObj, setconversationObj] = useState(init);
+    if (mode == "main") {
+        return (
         <div style={{backgroundColor: "rgb(153, 115, 76)", height: "100%", display: "flex", 
             justifyContent: "center"}}>
             <div>
@@ -141,6 +182,40 @@ const SuspectPannel = ({setMode}) => {
                 </div>
             </div>
         </div>)
+    }
+    else if (mode == "accuseWrong") {
+        //this is where we accuse an incorrect suspect
+        return (
+            <div style={{backgroundColor: "rgb(153, 115, 76)", width: "100%", height: "100%", 
+            display: "flex", flexDirection: "column", justifyContent: "center"}}>
+                <strong style = {{fontSize: "2em"}}>You Lose</strong>
+                <strong style = {{fontSize: "2em"}}>The correct answer was Lady Victoria</strong>
+                <strong style = {{fontSize: "2em"}}>Please reload the page to play again</strong>
+            </div>
+        )
+    }
+    else if (mode == "accueseCorrect") {
+
+    }
+    else {
+        //interrogate suspects
+        //list of messages
+        var arr
+        if (mode == "Butler") {
+            arr = conversationObj.Butler
+        }
+        else if (mode == "Edward Greybook") {
+            arr = conversationObj.EdwardGreybook
+        }
+        else if (mode == "Emily Greybook") {
+            arr = conversationObj.EmilyGreybook
+        }
+        else if (mode == "Lady Victoria") {
+            arr = conversationObj.LadyVictoria
+        }
+        return(<SuspectInterrogation name={mode} messages={arr} setMode={setMode}></SuspectInterrogation>)
+    }
+    
 }
 export default SuspectPannel 
 ;
