@@ -4,41 +4,80 @@ import SuspectCard from "./SuspectCard";
 
 /**
  * We store messages as an object that maps the name of the character to the list of conversations
- * this also figures out if it's the User or the LLM
+ * this also figures out if it's the User or the LLM. This is 
  * @param {object} prevObject 
  * @param {string} character 
  * @param {string} message 
  */
 export function addMessage(prevObject, character, message) {
+    const obj = new Object()
     if (character == "Butler") {
-        const obj = new Object()
         obj.EdwardGreybook = prevObject.EdwardGreybook
         obj.EmilyGreybook = prevObject.EmilyGreybook
         obj.LadyVictoria = prevObject.LadyVictoria
-        var arr = []
-        for (var i = 0; i < prevObject.Butler.length; i ++) {
-            arr.push(prevObject.Butler[i])
-        }
         if (prevObject.Butler.length % 2 == 0) {
             //it's GPTs turn
             var str = "GPT: " + message
-            arr.push(str)
+            prevObject.Butler.push(str)
         }
         else {
             //its the users turn
             var str = "User: " + message
-            arr.push(str)
+            prevObject.Butler.push(str)
         }
-
+        obj.Butler = prevObject.Butler
+        return obj
     }
     else if (character == "Edward Greybook") {
-
+        obj.EmilyGreybook = prevObject.EmilyGreybook
+        obj.LadyVictoria = prevObject.LadyVictoria
+        obj.Butler = prevObject.Butler
+        if (prevObject.Butler.length % 2 == 0) {
+            //it's GPTs turn
+            var str = "GPT: " + message
+            prevObject.EdwardGreybook.push(str)
+        }
+        else {
+            //its the users turn
+            var str = "User: " + message
+            prevObject.EdwardGreybook.push(str)
+        }
+        obj.EdwardGreybook = prevObject.EdwardGreybook
+        return obj
     }
     else if (character == "Emily Greybook") {
-
+        obj.EdwardGreybook = prevObject.EdwardGreybook
+        obj.LadyVictoria = prevObject.LadyVictoria
+        obj.Butler = prevObject.Butler
+        if (prevObject.Butler.length % 2 == 0) {
+            //it's GPTs turn
+            var str = "GPT: " + message
+            prevObject.EmilyGreybook.push(str)
+        }
+        else {
+            //its the users turn
+            var str = "User: " + message
+            prevObject.EmilyGreybook.push(str)
+        }
+        obj.EmilyGreybook = prevObject.EmilyGreybook
+        return obj
     }
     else if (character == "Lady Victoria") {
-
+        obj.EdwardGreybook = prevObject.EdwardGreybook
+        obj.EmilyGreybook = prevObject.EmilyGreybook
+        obj.Butler = prevObject.Butler
+        if (prevObject.Butler.length % 2 == 0) {
+            //it's GPTs turn
+            var str = "GPT: " + message
+            prevObject.LadyVictoria.push(str)
+        }
+        else {
+            //its the users turn
+            var str = "User: " + message
+            prevObject.LadyVictoria.push(str)
+        }
+        obj.LadyVictoria = prevObject.LadyVictoria
+        return obj
     }
 
 }
