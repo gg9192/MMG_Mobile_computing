@@ -48,7 +48,7 @@ const Interrogation = ({name, messages, setconversationObj}) => {
         
     return (
         
-        <div style={{ backgroundColor: "rgb(105,62,35)", width: "80%", height: "80%"}}>
+        <div style={{ backgroundColor: "rgb(105,62,35)", width: "90%", height: "80%"}}>
             <div style={{height: "95%"}}>
                 <InterrogationDisplay messages={messages}></InterrogationDisplay>
             </div>
