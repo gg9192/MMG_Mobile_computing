@@ -15,7 +15,7 @@ const SuspectInterrogation = ({name, setMode, messages, setconversationObj}) => 
         <div style={{backgroundColor: "rgb(153, 115, 76)", width: "100%", height: "100%", display: "flex", flexDirection: "columns"}}>
             <div style={{height: "100%", width: "40%"}} >
                 <div style={{width: "100%", height: "70%", display: "flex",flexDirection: "Column", justifyContent: "center", alignItems: "center"}}>
-                    <img src ="Butler.png" style={{height: "80%", width: "50%"}}></img>
+                    <img src ="butler.png" style={{height: "80%", width: "50%"}}></img>
                 </div>
                 <div style={{width: "100%", height: "30%", display: "flex",flexDirection: "row", alignItems: "center"}}>
                     <div style={{position: "absolute", marginTop: "-220px", marginLeft: "80px"}}>
