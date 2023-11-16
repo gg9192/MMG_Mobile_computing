@@ -240,7 +240,13 @@ const SuspectPannel = () => {
         )
     }
     else if (mode == "accueseCorrect") {
-
+        return (
+            <div style={{backgroundColor: "rgb(153, 115, 76)", width: "100%", height: "100%", 
+            display: "flex", flexDirection: "column", justifyContent: "center"}}>
+                <strong style = {{fontSize: "2em"}}>You win!</strong>
+                <strong style = {{fontSize: "2em"}}>Please reload the page to play again</strong>
+            </div>
+        )
     }
     else {
         //interrogate suspects

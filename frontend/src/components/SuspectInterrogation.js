@@ -82,7 +82,7 @@ const SuspectInterrogation = ({name, setMode, messages, setconversationObj}) => 
                     </div>
                     <div style={{width: "100%", height: "30%", display: "flex",flexDirection: "row", alignItems: "center"}}>
                         <div style={{position: "absolute", marginTop: "-220px", marginLeft: "80px"}}>
-                            <Button text="Accuse" setMode={setMode} setString="accuseWrong"></Button>
+                            <Button text="Accuse" setMode={setMode} setString="accueseCorrect"></Button>
                         </div>
                         <div style={{position: "absolute", marginTop: "-30px", marginLeft: "110px"}}>
                             <Button text="Back" setMode={setMode} setString="main"></Button>

@@ -1,6 +1,5 @@
 import React from "react";
 import Button from "./Button";
-import { Textfit } from 'react-textfit';
 
 /** 
  * @prop {function} setMode setmode for GameUI
