@@ -29,7 +29,7 @@ function buildInitialState() {
     ]
     obj.LadyVictoria = [
     "Welcome to Ravenscroft Manor. I am Lady Victoria, its formidable mistress. Adorned in elegance, I navigate high society's secrets " + 
-    "with an enigmatic allure. Beyond the façade lies a burning desire for wealth that propels my ambitions through this labyrinth of " + 
+    "with an enigmatic allure. Beyond the facade lies a burning desire for wealth that propels my ambitions through this labyrinth of " + 
     "intrigue. Beware, for in these walls, secrets whisper and motivations lie buried. Will you dare to unravel the desires that drive us to " + 
     "the edge of ambition?"
     ]
@@ -45,59 +45,93 @@ const init = buildInitialState()
  * @param {object} prevObject 
  * @param {string} character 
  * @param {string} message 
+ * @returns the conversation state after the message has been added
  */
 export function addMessage(prevObject, character, message) {
-    const obj = new Object()
+    console.log(prevObject, "prev")
+    var obj = new Object()
     if (character == "Butler") {
         obj.EdwardGreybook = prevObject.EdwardGreybook
         obj.EmilyGreybook = prevObject.EmilyGreybook
         obj.LadyVictoria = prevObject.LadyVictoria
         if (prevObject.Butler.length % 2 == 0) {
             //it's GPTs turn
-            var str = "GPT: " + message
-            prevObject.Butler.push(str)
+            var str = character + ": " + message
+            var arr = []
+            for (var i = 0; i < prevObject.Butler.length; i ++) {
+                arr.push(prevObject.Butler[i])
+            }
+            arr.push(str)
+            obj.Butler = arr
+            return obj
         }
         else {
+            
             //its the users turn
             var str = "User: " + message
-            prevObject.Butler.push(str)
+            var arr = []
+            for (var i = 0; i < prevObject.Butler.length; i ++) {
+                arr.push(prevObject.Butler[i])
+            }
+            arr.push(str)
+            obj.Butler = arr
+            return obj
         }
-        obj.Butler = prevObject.Butler
-        return obj
+        
     }
     else if (character == "Edward Greybook") {
         obj.EmilyGreybook = prevObject.EmilyGreybook
         obj.LadyVictoria = prevObject.LadyVictoria
         obj.Butler = prevObject.Butler
-        if (prevObject.Butler.length % 2 == 0) {
+        if (prevObject.EdwardGreybook.length % 2 == 0) {
             //it's GPTs turn
-            var str = "GPT: " + message
-            prevObject.EdwardGreybook.push(str)
+            var str = character + ": " + message
+            var arr = []
+            for (var i = 0; i < prevObject.EdwardGreybook.length; i ++) {
+                arr.push(prevObject.EdwardGreybook[i])
+            }
+            arr.push(str)
+            obj.EdwardGreybook = arr
+            return obj
         }
         else {
             //its the users turn
             var str = "User: " + message
-            prevObject.EdwardGreybook.push(str)
+            var arr = []
+            for (var i = 0; i < prevObject.EdwardGreybook.length; i ++) {
+                arr.push(prevObject.EdwardGreybook[i])
+            }
+            arr.push(str)
+            obj.EdwardGreybook = arr
+            return obj
         }
-        obj.EdwardGreybook = prevObject.EdwardGreybook
-        return obj
     }
     else if (character == "Emily Greybook") {
         obj.EdwardGreybook = prevObject.EdwardGreybook
         obj.LadyVictoria = prevObject.LadyVictoria
         obj.Butler = prevObject.Butler
-        if (prevObject.Butler.length % 2 == 0) {
-            //it's GPTs turn
-            var str = "GPT: " + message
-            prevObject.EmilyGreybook.push(str)
+        if (prevObject.EmilyGreybook.length % 2 == 0) {
+            //its gpts turn
+            var str = character + ": " + message
+            var arr = []
+            for (var i = 0; i < prevObject.EmilyGreybook.length; i ++) {
+                arr.push(prevObject.EmilyGreybook[i])
+            }
+            arr.push(str)
+            obj.EmilyGreybook = arr
+            return obj
         }
         else {
             //its the users turn
             var str = "User: " + message
-            prevObject.EmilyGreybook.push(str)
+            var arr = []
+            for (var i = 0; i < prevObject.EmilyGreybook.length; i ++) {
+                arr.push(prevObject.EmilyGreybook[i])
+            }
+            arr.push(str)
+            obj.EmilyGreybook = arr
+            return obj
         }
-        obj.EmilyGreybook = prevObject.EmilyGreybook
-        return obj
     }
     else if (character == "Lady Victoria") {
         obj.EdwardGreybook = prevObject.EdwardGreybook
@@ -105,16 +139,27 @@ export function addMessage(prevObject, character, message) {
         obj.Butler = prevObject.Butler
         if (prevObject.Butler.length % 2 == 0) {
             //it's GPTs turn
-            var str = "GPT: " + message
-            prevObject.LadyVictoria.push(str)
+            var str = character + ": " + message
+            var arr = []
+            for (var i = 0; i < prevObject.LadyVictoria.length; i ++) {
+                arr.push(prevObject.LadyVictoria[i])
+            }
+            arr.push(str)
+            obj.LadyVictoria = arr
+            return obj
         }
         else {
             //its the users turn
             var str = "User: " + message
-            prevObject.LadyVictoria.push(str)
+            var arr = []
+            for (var i = 0; i < prevObject.LadyVictoria.length; i ++) {
+                arr.push(prevObject.LadyVictoria[i])
+            }
+            arr.push(str)
+            obj.LadyVictoria = arr
+            return obj
         }
-        obj.LadyVictoria = prevObject.LadyVictoria
-        return obj
+        
     }
 
 }
@@ -213,7 +258,7 @@ const SuspectPannel = () => {
         else if (mode == "Lady Victoria") {
             arr = conversationObj.LadyVictoria
         }
-        return(<SuspectInterrogation name={mode} messages={arr} setMode={setMode}></SuspectInterrogation>)
+        return(<SuspectInterrogation name={mode} messages={arr} setMode={setMode} setconversationObj={setconversationObj}></SuspectInterrogation>)
     }
     
 }

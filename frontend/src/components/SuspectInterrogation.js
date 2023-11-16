@@ -3,14 +3,13 @@ import Interrogation from "./Interrogation"
 import Button from "./Button";
 /**
     @prop {string} name, the name of the suspect
-    @prop {function} setMode the setMode of 
+    @prop {function} setMode the setMode of the suspect panel
+    @prop {function} setconversationObj the setconversationObj of the suspect panel
     This is how we communicate with lamma. This is also where we make API calls to LLAMA
     for each character. This is where the magic happens boys
     @returns the component used to interrogate the suspect
 */
-
-const SuspectInterrogation = ({name, setMode, messages}) => {
-    console.log(messages)
+const SuspectInterrogation = ({name, setMode, messages, setconversationObj}) => {
     if (name == "Butler") {
         return (
         <div style={{backgroundColor: "rgb(153, 115, 76)", width: "100%", height: "100%", display: "flex", flexDirection: "columns"}}>
@@ -24,7 +23,7 @@ const SuspectInterrogation = ({name, setMode, messages}) => {
                 </div>
             </div>
             <div style={{width: "71%", display: "flex", flexDirection: "rows", justifyContent: "center", alignItems: "center"}}>
-                <Interrogation name="Butler" messages={messages}></Interrogation>    
+                <Interrogation name="Butler" messages={messages} setconversationObj={setconversationObj}></Interrogation>    
             </div>  
         </div>)
     }
@@ -40,7 +39,7 @@ const SuspectInterrogation = ({name, setMode, messages}) => {
                 </div>
             </div>
             <div style={{width: "71%", display: "flex", flexDirection: "rows", justifyContent: "center", alignItems: "center"}}>
-                <Interrogation name="Edward Greybook" messages={messages}></Interrogation>    
+                <Interrogation name="Edward Greybook" messages={messages} setconversationObj={setconversationObj}></Interrogation>    
             </div>  
         </div>)
     }
@@ -56,7 +55,7 @@ const SuspectInterrogation = ({name, setMode, messages}) => {
                 </div>
             </div>
             <div style={{width: "71%", display: "flex", flexDirection: "rows", justifyContent: "center", alignItems: "center"}}>
-                <Interrogation name="Emily Greybook" messages={messages}></Interrogation>    
+                <Interrogation name="Emily Greybook" messages={messages} setconversationObj={setconversationObj}></Interrogation>    
             </div>  
         </div>)
     }
@@ -72,7 +71,7 @@ const SuspectInterrogation = ({name, setMode, messages}) => {
                 </div>
             </div>
             <div style={{width: "71%", display: "flex", flexDirection: "rows", justifyContent: "center", alignItems: "center"}}>
-                <Interrogation name="Lady Victoria" messages={messages}></Interrogation>    
+                <Interrogation name="Lady Victoria" messages={messages} setconversationObj={setconversationObj}></Interrogation>    
             </div>  
         </div>)
     }
