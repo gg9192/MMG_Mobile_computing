@@ -209,7 +209,7 @@ const SuspectPannel = () => {
                     <div onClick={() => {
                         setMode("Lady Victoria")
                     }}>
-                        <SuspectCard imagePath={"./Lady-Victoria.png"} name="Lady Victoria (wife)"
+                        <SuspectCard imagePath={"./lady-victoria.png"} name="Lady Victoria (wife)"
                         description="In the grand manor of Ravenscroft, Lady Victoria reigns as its formidable mistress, 
                         a paragon of aristocratic refinement and intrigue. With her exquisite gowns, enigmatic allure, 
                         and a presence that commands attention, she navigates the high society's labyrinth of secrets 
@@ -240,7 +240,13 @@ const SuspectPannel = () => {
         )
     }
     else if (mode == "accueseCorrect") {
-
+        return (
+            <div style={{backgroundColor: "rgb(153, 115, 76)", width: "100%", height: "100%", 
+            display: "flex", flexDirection: "column", justifyContent: "center"}}>
+                <strong style = {{fontSize: "2em"}}>You win!</strong>
+                <strong style = {{fontSize: "2em"}}>Please reload the page to play again</strong>
+            </div>
+        )
     }
     else {
         //interrogate suspects
