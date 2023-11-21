@@ -2,6 +2,7 @@ from rest_framework.views import APIView
 from rest_framework.views import APIView
 from django.http import HttpResponse
 from . import tfidf
+from django.http import JsonResponse
 
 class FetchMemories(APIView):
 
@@ -24,13 +25,21 @@ class FetchMemories(APIView):
             "n" : 3
         }
 
+        EXAMPLE RESPONSE FROM POSTMAN
+        {"memories": ["Never stop learning", "The unexamined life is not worth living", "The game of life is a game of everlasting learning"]}
+
         """
         query = request.data["query"]
         memories = request.data["memories"]
         n = request.data["n"]
         subset = tfidf.getMemorySubset(query, memories, n)
-        response = HttpResponse()
-        return response
+        arr = []
+        for tup in subset:
+            arr.append(tup[1])
+        data = {
+            "memories": arr
+        }
+        return JsonResponse(data)
 
     # 2. Create
     def post(self, request):

@@ -13,9 +13,12 @@ def getMemorySubset(query:str, memories:list, n:int) -> list:
     queryWords = extractor.extract_keywords(query)
     queryVector = vectorizeQuery(queryWords, memories)
     vectors = vectorize(memories, queryWords)
-    print(queryVector)
-
-    return queryWords
+    res = []
+    for i in range(0, len(memories)):
+        cossim = getCosineSimilarity(queryVector, vectors[i])
+        res.append((cossim, memories[i]))
+    res = sorted(res, key=lambda x: x[0])
+    return res[-n:]
 
 def vectorizeQuery(queryWords: list, memories: list) -> list:
     """given the query words returned from yake, vectorize it"""
@@ -35,6 +38,23 @@ def vectorizeQuery(queryWords: list, memories: list) -> list:
         res.append(m[word] * idf.get(word, 1.0))
     return res
     
+def getCosineSimilarity(vector1: list, vector2: list):
+    """given 2 vectors as lists, calculate the cosine similarity"""
+    dot = 0
+    if len(vector1) != len(vector2):
+        raise Exception("vector lengths are different")
+    for i in range(0, len(vector1)):
+        dot += vector1[i] * vector2[i]
+    len1 = 0
+    for i in vector1:
+        len1 += i ** 2
+    len1 = numpy.power(len1, 0.5)
+    len2 = 0
+    for i in vector2:
+        len2 += i ** 2
+    len2 = numpy.power(len2, 0.5)
+
+    return (dot/(len1 * len2))
 
 def vectorize(memories: list, queryWords: tuple) -> list:
     """given the list of memeories, and the list of querywords extracted by yake, 
