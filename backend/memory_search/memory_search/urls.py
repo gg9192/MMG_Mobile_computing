@@ -20,5 +20,5 @@ from memory_search.views import *
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', FetchMemories.as_view()),
+    path('API/fetchmemories', FetchMemories.as_view()),
 ]
