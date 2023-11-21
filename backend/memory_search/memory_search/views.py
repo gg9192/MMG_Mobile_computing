@@ -28,7 +28,6 @@ class FetchMemories(APIView):
         query = request.data["query"]
         memories = request.data["memories"]
         n = request.data["n"]
-        print(query, memories, n, type(memories))
         subset = tfidf.getMemorySubset(query, memories, n)
         response = HttpResponse()
         return response

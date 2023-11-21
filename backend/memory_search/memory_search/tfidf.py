@@ -11,12 +11,32 @@ def getMemorySubset(query:str, memories:list, n:int) -> list:
     # the n=1 on the next line tells yake that we only want 1 word in each n-gram
     extractor = yake.KeywordExtractor(stopwords=stop_words, n=1)
     queryWords = extractor.extract_keywords(query)
+    queryVector = vectorizeQuery(queryWords, memories)
     vectors = vectorize(memories, queryWords)
-    print(vectors, type(memories))
+    print(queryVector)
 
     return queryWords
 
-def vectorize(memories: list, queryWords: tuple):
+def vectorizeQuery(queryWords: list, memories: list) -> list:
+    """given the query words returned from yake, vectorize it"""
+    queryWords2 = []
+    for tup in queryWords:
+        queryWords2.append(tup[0])
+    m = {}
+    # count the words
+    for word in queryWords2:
+        m[word] = m.get(word,0) + 1
+    # normalize it
+    for word in m:
+        m[word] = m[word] / len(queryWords2)
+    idf = getIDF(memories)
+    res = []
+    for word in m:
+        res.append(m[word] * idf.get(word, 1.0))
+    return res
+    
+
+def vectorize(memories: list, queryWords: tuple) -> list:
     """given the list of memeories, and the list of querywords extracted by yake, 
     return a list where each element is a n dimensional vector (n is number of words
     in the querry) 
