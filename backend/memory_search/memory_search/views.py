@@ -1,6 +1,6 @@
 from rest_framework.views import APIView
 from rest_framework.views import APIView
-from django.http import HttpResponse
+from django.http import JsonResponse
 import tensorflow_hub as hub
 import numpy as np
 from django.core.cache import cache
@@ -31,8 +31,14 @@ class FetchMemories(APIView):
         """given the query, the list of memories, and n (the number of memories in 
         the subset), return the n most relavent memories"""
         arr = []
+        queryVec = self.vectorize(query)
         for mem in memories:
             vec = self.vectorize(mem)
+            cossim = getCosineSimilarity(queryVec, vec)
+            arr.append((cossim, mem))
+        res = sorted(arr,key=lambda x: x[0])
+        print(res)
+        return res[-n:]
 
 
     def get(self, request):
@@ -61,10 +67,15 @@ class FetchMemories(APIView):
         query = request.data["query"]
         memories = request.data["memories"]
         n = request.data["n"]
-        v1 = self.vectorize("what is your favorite animal")
-        v2 = self.vectorize("what animal do you like the most")
-        print(getCosineSimilarity(v1, v2))
-        response = HttpResponse()
+        subset = self.getSubset(query, memories, n)
+        # parse the cosine sim's out
+        res = []
+        for el in subset:
+            res.append(el[1])
+        data = {
+            "memories": res
+        }
+        response = JsonResponse(data)
         return response
 
     # 2. Create
