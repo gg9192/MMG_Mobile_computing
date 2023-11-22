@@ -54,7 +54,9 @@ const Interrogation = ({name, messages, setconversationObj}) => {
             </div>
             <div style={{height: "30px", backgroundColor: "white"}}>
                 <div style={{width: "100%", height: "100%", position: "relative"}}>
-                
+                    <input id="input" onKeyDown={(e) => {
+                        if (e.key == "Enter") {handleButtonClick("")}
+                    }} style={{height: "100%"}}></input>
                     {/* this is cheesing the button into doing what we need, see callback*/}
                     <Button text="submit" id="submit" setMode={handleButtonClick} ></Button>
                 </div>
