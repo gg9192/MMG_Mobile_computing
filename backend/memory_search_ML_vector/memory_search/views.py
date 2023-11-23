@@ -1,6 +1,6 @@
 from rest_framework.views import APIView
 from rest_framework.views import APIView
-from django.http import JsonResponse
+from django.http import JsonResponse, HttpResponse
 import tensorflow_hub as hub
 import numpy as np
 from django.core.cache import cache
