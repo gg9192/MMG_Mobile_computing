@@ -1,0 +1,24 @@
+The following piece of text comes back from one of the prompt teams reponses, the purpose of this document is to show how we search for relavent context
+Credit: https://janav.wordpress.com/2013/10/27/tf-idf-and-cosine-similarity/
+
+****************prompt**********************
+summerise this text into 1-2 sentences, write it in second person. Only report on information containing an action and location
+Oh my goodness, no! I am absolutely appalled by the suggestion that I could be capable of such a heinous crime. My father was a kind and just man, and I loved him dearly. I cannot fathom why anyone would think that I would harm him. (pauses, looking around the room with a mixture of sadness and indignation) I was in the library, studying for my upcoming exams, at the time of the murder. I had nothing to do with it, I assure you. (looks down at hands, fidgeting with a piece of paper) I am completely devastated by my father's death, and I cannot bear the thought of anyone suspecting me of being involved in his murder."
+
+****************response**********************
+
+You vehemently deny any involvement in the heinous crime, expressing shock and grief over your father's death. You emphasize studying in the library during the murder, distancing yourself from any suspicion, visibly distraught by the accusation while fidgeting with a piece of paper.
+
+****************analysis**********************
+
+By using a prompt like this, we can derive 2 memories
+You vehemently deny any involvement in the heinous crime, expressing shock and grief over your father's death.
+You emphasize studying in the library during the murder, distancing yourself from any suspicion, visibly distraught by the accusation while fidgeting with a piece of paper.
+ 
+which can go into our memory stream as 2 separate memories
+Then, we can run keyword extraction on any future questions
+
+Idea: use cosine similarity and Tf-Idf to get relavant memories.
+Use a list of keywords from input as the search 
+return a subset. Ideally, this can be done on a django backend to ensure that we can proxy to the same URL. We can just have our backend proxy to GPT
+under the hood, This entirely eliminates any possibility of CORS errors

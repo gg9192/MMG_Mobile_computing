@@ -13,7 +13,6 @@ const SuspectCard = ({name, imagePath, description}) => {
     handles when the mouse hovers over the component
     */
     function onHover() {
-        console.log("a")
         if (hovered == false) {
             sethovered(true)
         }
@@ -32,20 +31,24 @@ const SuspectCard = ({name, imagePath, description}) => {
 
     if (hovered == false) {
         return (<div style={styles} onMouseEnter={onHover} onMouseLeave={onExit} className="card">
+        <div style={{width: "20%", height: "100%", display: "flex", justifyContent: "center", alignItems: "center"}}>
         <img src={imagePath} style={{height: "80%"}} alt={name}></img>
-        <div>
+        </div>
+        <div style={{width: "80%", height: "100%", display: "flex", justifyContent: "center", alignItems: "center", flexDirection: "column"}}>
             <strong>{name}</strong>
             <div>{description}</div>
             </div>
         </div>)
     }
     else {
-        return (<div onMouseEnter={onHover} onMouseLeave={onExit} style={styles} className="card hoveredCard">
+        return (<div style={styles} onMouseEnter={onHover} onMouseLeave={onExit} className="card hoveredCard">
+        <div style={{width: "20%", height: "100%", display: "flex", justifyContent: "center", alignItems: "center   "}}>
         <img src={imagePath} style={{height: "80%"}} alt={name}></img>
-        <div>
+        </div>
+        <div style={{width: "80%", height: "100%", display: "flex", justifyContent: "center", alignItems: "center", flexDirection: "column"}}>
             <strong>{name}</strong>
             <div>{description}</div>
-        </div>
+            </div>
         </div>)
     }
     
