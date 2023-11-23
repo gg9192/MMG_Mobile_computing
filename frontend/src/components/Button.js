@@ -10,7 +10,7 @@ import styles from "../styles/Button.css"
  * @returns a interface for the user to communicate with game characters
  */
 
-const Button = ({text, id, setMode, setObject}) => {
+const Button = ({text, id, setMode, setString}) => {
 
     /*handles the button being clicked */
     function handleClick() {
