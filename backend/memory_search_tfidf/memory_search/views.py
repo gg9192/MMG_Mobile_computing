@@ -3,6 +3,7 @@ from rest_framework.views import APIView
 from django.http import HttpResponse
 from . import tfidf
 from django.http import JsonResponse
+from dotenv import load_dotenv
 
 class FetchMemories(APIView):
 
@@ -41,10 +42,17 @@ class FetchMemories(APIView):
         }
         return JsonResponse(data)
 
-    # 2. Create
     def post(self, request):
         """handles the post request (not supported) """
         response = HttpResponse()
         response.status_code = 405
         response.content = "Operation not supported, use get"
         return response
+    
+class GPT(APIView):
+    def get():
+        pass 
+
+    def get():
+        pass
+    
