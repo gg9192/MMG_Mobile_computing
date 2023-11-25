@@ -65,4 +65,4 @@ response:
 PARAMS:
 maxtokens: the max tokens in the response from gpt, this is on their API. We simply forward this to their API. We can use this to limit costs
 
-prompt: the pormpt for GPT. this is simmilar to llama, as preston has said. 
+prompt: the pormpt for GPT. this is similar to llama, as preston has said. See the example
