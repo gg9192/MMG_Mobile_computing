@@ -1,3 +1,6 @@
+************************************************************************
+Memory retrival doccumentation
+
 This is the backend that I have built for memory retireval, both 
 backends have the exact same API. The tfidf uses TF IDF to get relevent
 memories, while the ML_vector uses a pretrained neural network that was 
@@ -32,3 +35,6 @@ query: the query string, likely the question from the frontend
 memories: the list of memories that we want to extract a subset from
 n: the number of memories you want in the subset
 
+************************************************************************
+
+GPT proxy doccumentation

@@ -5,11 +5,9 @@ from . import tfidf
 from django.http import JsonResponse
 from dotenv import load_dotenv
 import openai
-import os
 
 # this line loads the env file 
 load_dotenv("./memory_search/.env")
-print(openai.Model.list(), "models")
 
 class FetchMemories(APIView):
 
@@ -51,12 +49,14 @@ class FetchMemories(APIView):
     
 class GPT(APIView):
     def get(self, request):
-        prompt = request.data['prompt']
+        messages = request.data['prompt']
         maxtokens = request.data['maxtokens']
-        print(os.getenv("OPENAI_API_KEY"),"apikey")
-        if prompt and maxtokens:
-            compleation = openai.completions.create(prompt=prompt, max_tokens=1000, model="gpt-3.5-turbo")
-            return JsonResponse(compleation)
+        if messages and maxtokens:
+            compleation = openai.chat.completions.create(messages=messages, max_tokens=maxtokens, model="gpt-3.5-turbo")
+            data = {
+                "response" : compleation.choices[0].message.content.strip()
+            }
+            return JsonResponse(data)
         else:
             res = HttpResponse("bad request")
             res.status_code = 400
