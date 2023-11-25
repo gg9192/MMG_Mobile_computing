@@ -1,3 +1,6 @@
+************************************************************************
+Memory retrival doccumentation
+
 This is the backend that I have built for memory retireval, both 
 backends have the exact same API. The tfidf uses TF IDF to get relevent
 memories, while the ML_vector uses a pretrained neural network that was 
@@ -5,6 +8,7 @@ developed by Google. Both have exactly the same API, so no one is harder
 for the frontend to use. There might be more dependency issues with the 
 ML_vector
 
+URL: API/fetchmemories
 ------------------------------------------------------------------------
 Postman example
 Request:
@@ -29,6 +33,36 @@ response:
 ------------------------------------------------------------------------
 PARAMS:
 query: the query string, likely the question from the frontend
+
 memories: the list of memories that we want to extract a subset from
+
 n: the number of memories you want in the subset
 
+************************************************************************
+
+GPT proxy doccumentation
+
+URL: API/GPT
+------------------------------------------------------------------------
+Postman example
+Request:
+    
+    Header: 
+        Content-Type: application/json
+
+    Body (as a raw string):
+    {
+            "maxtokens": 2,
+            "prompt": [{"role": "system", "content": "You are a helpful assistant."}, {"role": "user", "content": "hi"}]
+        }
+
+response:
+    {
+        "response": "Hello!"
+    }
+    
+------------------------------------------------------------------------
+PARAMS:
+maxtokens: the max tokens in the response from gpt, this is on their API. We simply forward this to their API. We can use this to limit costs
+
+prompt: the pormpt for GPT. this is similar to llama, as preston has said. See the example
