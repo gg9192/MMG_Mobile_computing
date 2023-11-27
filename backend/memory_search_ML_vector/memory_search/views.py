@@ -4,6 +4,10 @@ from django.http import JsonResponse, HttpResponse
 import tensorflow_hub as hub
 import numpy as np
 from django.core.cache import cache
+from dotenv import load_dotenv
+import openai
+
+load_dotenv("./memory_search/.env")
 
 def getCosineSimilarity(vector1: np.ndarray, vector2: np.ndarray) -> float:
     """given the 2 vectors as a np array, compute the cosine similarity"""
@@ -78,10 +82,18 @@ class FetchMemories(APIView):
         response = JsonResponse(data)
         return response
 
-    # 2. Create
-    def post(self, request):
-        """handles the post request"""
-        response = HttpResponse()
-        response.status_code = 405
-        response.content = "Operation not supported, use get"
-        return response
+class GPT(APIView):
+    def get(self, request):
+        messages = request.data['prompt']
+        maxtokens = request.data['maxtokens']
+        if messages and maxtokens:
+            compleation = openai.chat.completions.create(messages=messages, max_tokens=maxtokens, model="gpt-3.5-turbo")
+            data = {
+                "response" : compleation.choices[0].message.content.strip()
+            }
+            return JsonResponse(data)
+        else:
+            res = HttpResponse("bad request")
+            res.status_code = 400
+            return res
+    
