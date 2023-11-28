@@ -20,7 +20,7 @@
         "test": "react-scripts test",
         "eject": "react-scripts eject"
     },
-    "proxy": "http://172.30.74.44:8000",
+    "proxy": "https://api.openai.com/v1/completions",
     "eslintConfig": {
         "extends": [
             "react-app",

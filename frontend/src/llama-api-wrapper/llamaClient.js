@@ -122,60 +122,40 @@ This is because the await keyword will wait for the fetchUserData() promise to s
  * Returns a promise
 */
 export async function getCompleation(prompt, character) {
-  if (character == "Butler") {}
-  else if (character == "Lady Victoria") {}
-  else if (character == "Emily Greybrook") {}
-  else if (character == "Edward Greybrook") {}
+  const characterList = ["Butler", "Lady Victoria", "Emily Greybrook", "Edward Greybrook"];
+  // check if given character is valid
+  if (!characterList.includes(character)) {
+    throw new Error("character given not valid!")
+  }
+  
   return completion(prompt)
   }
+
+
 
   export function parseResponse(response) {
     return response.choices[0].message.content
   }
 
   function buildPrompt(prompt) {
-      return '{"messages": [{"role": "system", "content": "You are a helpful assistant."},{"role": "user", "content": "' + prompt + '"}], "temperature": 1}';
+      return '{ "userQuestion" : "what makes life worth living", "memories" : ["The game of life is a game ofja everlasting learning", "The unexamined life is not worth living", "Never stop learning"], "character" : "Butler " }';
   }
 
+
+
 /**
- * Attempts to send a prompt to llama for completion
+ * Attempts to send a prompt to backend for completion
  * 
- * @param {String} prompt - a prompt for llama to provide a completion for.
- * @returns {Response} a response for the prompt.
+ * @param {String} prompt - a prompt for backend to send to .
+ * @returns {Response} a response from backend
  */
-// async function completion(prompt) {
-//   var prompt = buildPrompt(prompt)
-//     const requestBody = prompt
-//     const requestOptions = {
-//         method: 'POST',
-//         headers: {'Content-Type': 'application/json'},
-//         body: requestBody
-//     };
-
-//     return await fetch(apiUrl, requestOptions)
-// }
-
-
-
 async function completion(prompt) {
-  var prompt = buildPrompt(prompt)
-  const completion = await openai.createCompletion({
-    model: "gpt-3.5-turbo",
-    messages: "How are you today?",
-    //temperature: 0,
-    max_tokens:1000
-    });
-    // console.log(completion.data.choices[0].text);
-    return completion
+    const requestBody = prompt
+    const requestOptions = {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: requestBody
+    };
+  
+  return await fetch("localhost:3001/API/getCompleationForCharacter",requestOptions)
 }
-
-
-
-
-// New GTP Stuff
-const OpenAI = require("openai");
-require("dotenv").config();
-
-const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY,
-});
