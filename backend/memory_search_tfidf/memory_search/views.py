@@ -25,13 +25,13 @@ class GetCompleationForCharacter(APIView):
         for tup in subset:
             arr.append(tup[1])
         prompt = buildPromptForCharacter(character, arr, query)
-        response = getCompleation(prompt)
-        newMemories = getNewMemories(response)
+        # response = getCompleation(prompt)
+        # newMemories = getNewMemories(response)
         data = {
-            "response" : response,
-            "memories": newMemories,
+            "response" : "Did you know that if you shuffle a deck of cards perfectly, chances are that the resulting order has never existed before in the history of the universe?",
+            "memories": ["The game of life is a game of everlasting learning", "The unexamined life is not worth living", "Never stop learning"],
         }
-        return JsonResponse({})
+        return JsonResponse(data)
         
 def buildPromptForCharacter(character:str, memories:list[str], question:str) -> list[map]:
     """
