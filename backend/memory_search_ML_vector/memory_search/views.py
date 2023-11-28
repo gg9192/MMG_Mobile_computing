@@ -51,7 +51,7 @@ class FetchMemories(APIView):
         Things to send in the request, 
         query: the query memory (what the user asked in react)
         memories: the list of memories without any punctuation
-        n: the number of memeories to return in the subset
+        n: the number of memories to return in the subset
 
         ------------------------------------------------------------------------------------
         This is an example, the same example found here
@@ -87,9 +87,9 @@ class GPT(APIView):
         messages = request.data['prompt']
         maxtokens = request.data['maxtokens']
         if messages and maxtokens:
-            compleation = openai.chat.completions.create(messages=messages, max_tokens=maxtokens, model="gpt-3.5-turbo")
+            completion = openai.chat.completions.create(messages=messages, max_tokens=maxtokens, model="gpt-3.5-turbo")
             data = {
-                "response" : compleation.choices[0].message.content.strip()
+                "response" : completion.choices[0].message.content.strip()
             }
             return JsonResponse(data)
         else:

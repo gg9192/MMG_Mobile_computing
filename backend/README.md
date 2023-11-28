@@ -66,3 +66,12 @@ PARAMS:
 maxtokens: the max tokens in the response from gpt, this is on their API. We simply forward this to their API. We can use this to limit costs
 
 prompt: the pormpt for GPT. this is similar to llama, as preston has said. See the example
+
+How to talk with ChatGPT 
+0. Connect to school vpn
+1. cd backend
+2. cd memory_search_ML_vector
+3. python3 manage.py runserver 0.0.0.0:3001
+4. put localhost:3001/API/fetchmemories into postman if you want memories, localhost:3001/API/getCompleationForCharacter for conversations
+5. create a new header of type "Content-Type" with value "application/json"
+6. Then go into body and put in what you want to send 
