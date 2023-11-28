@@ -9,56 +9,68 @@ import openai
 # this line loads the env file 
 load_dotenv("./memory_search/.env")
 
-class FetchMemories(APIView):
+class GetCompleationForCharacter(APIView):
 
-    def get(self, request):
+    def post(self, request):
         """
-        handles the get request 
-        Things to send in the request, 
-        query: the query memory (what the user asked in react)
-        memories: the list of memories without any punctuation
-        n: the number of memeories to return in the subset
-
-        ------------------------------------------------------------------------------------
-        This is an example, the same example found here
-        https://janav.wordpress.com/2013/10/27/tf-idf-and-cosine-similarity/
-        In postman, my header is Content-Type: application/json
-        I am using the following as a raw string:
-        {
-            "query" : "life learning", 
-            "memories" : ["The game of life is a game of everlasting learning", "The unexamined life is not worth living", "Never stop learning"],
-            "n" : 3
-        }
-
-        EXAMPLE RESPONSE FROM POSTMAN
-        {"memories": ["Never stop learning", "The unexamined life is not worth living", "The game of life is a game of everlasting learning"]}
-
+        see the readme under backend for the docs
         """
-        query = request.data["query"]
+        query = request.data["userQuestion"]
         memories = request.data["memories"]
-        n = request.data["n"]
+        character = request.data["character"]
+        n = 4
         subset = tfidf.getMemorySubset(query, memories, n)
         arr = []
+        # the list
         for tup in subset:
             arr.append(tup[1])
+        prompt = buildPromptForCharacter(character, arr, query)
+        response = getCompleation(prompt)
+        newMemories = getMemories(response)
         data = {
-            "memories": arr
+            "response" : response,
+            "memories": newMemories,
         }
-        return JsonResponse(data)
+        return JsonResponse({})
+        
+def buildPromptForCharacter(character:str, memories:list[str], question:str) -> list[map]:
+    """
+    given the character and the memories, build the prompt for the character
+    """
+    result = []
+    # add on stock prompts for each character
+    if character == "Butler":
+        pass
+    if character == "Edward Greybook":
+        pass
+    if character == "Lady Victoria":
+        pass
+    if character == "Emily Greybook":
+        pass
+    #add the relavent memories to the prompt
+    for mem in memories:
+        pass
 
-    
-class GPT(APIView):
-    def get(self, request):
-        messages = request.data['prompt']
-        maxtokens = request.data['maxtokens']
-        if messages and maxtokens:
-            compleation = openai.chat.completions.create(messages=messages, max_tokens=maxtokens, model="gpt-3.5-turbo")
-            data = {
-                "response" : compleation.choices[0].message.content.strip()
-            }
-            return JsonResponse(data)
-        else:
-            res = HttpResponse("bad request")
-            res.status_code = 400
-            return res
-    
+    result.append({"role": "user",
+          "content": question})
+
+    return result
+
+def getCompleation(prompt:list[str]) -> str:
+    """given the prompt for the character, call llama and get the result string"""
+    maxtokens = 200
+    compleation = openai.chat.completions.create(messages=prompt, max_tokens=maxtokens, model="gpt-3.5-turbo")
+    return compleation.choices[0].message.content.strip()
+
+
+def getMemories(response:str) -> str:
+    """ 
+    Given the response from GPT, use a prebuilt prompt to get relavent memories
+    """
+    messages = []
+    maxtokens = 200
+    compleation = openai.chat.completions.create(messages=messages, max_tokens=maxtokens, model="gpt-3.5-turbo")
+    response = compleation.choices[0].message.content.strip()
+    #parse the response somehow
+
+    return None
