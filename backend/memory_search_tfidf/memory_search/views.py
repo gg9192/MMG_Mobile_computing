@@ -26,7 +26,7 @@ class GetCompleationForCharacter(APIView):
             arr.append(tup[1])
         prompt = buildPromptForCharacter(character, arr, query)
         response = getCompleation(prompt)
-        newMemories = getMemories(response)
+        newMemories = getNewMemories(response)
         data = {
             "response" : response,
             "memories": newMemories,
@@ -63,7 +63,7 @@ def getCompleation(prompt:list[str]) -> str:
     return compleation.choices[0].message.content.strip()
 
 
-def getMemories(response:str) -> str:
+def getNewMemories(response:str) -> str:
     """ 
     Given the response from GPT, use a prebuilt prompt to get relavent memories
     """
