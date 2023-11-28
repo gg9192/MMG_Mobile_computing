@@ -1,76 +1,22 @@
-************************************************************************
-Memory retrival doccumentation
+This is the new API that our backend will follow. This was discussed durring our meeting
 
-This is the backend that I have built for memory retireval, both 
-backends have the exact same API. The tfidf uses TF IDF to get relevent
-memories, while the ML_vector uses a pretrained neural network that was 
-developed by Google. Both have exactly the same API, so no one is harder
-for the frontend to use. There might be more dependency issues with the 
-ML_vector
-
-URL: API/fetchmemories
-------------------------------------------------------------------------
-Postman example
-Request:
-
-    Header:
-    Content-Type: application/json
-
-    Body (as a raw string):
-    {
-            "query" : "what makes life worth living", 
-            "memories" : ["The game of life is a game of everlasting learning", "The unexamined life is not worth living", "Never stop learning"],
-            "n" : 1
+URL: localhost:3001/API/getCompleationForCharacter
+Post request
+example body
+{
+            "userQuestion" : "what makes life worth living", (the question from the user)
+            "memories" : ["The game of life is a game of everlasting learning", "The unexamined life is not worth living", "Never stop learning"], (the memories that are associated with the given character)
+            "character" : "Butler   " (the character *needs to follow english conventions*)
         }
-
-response:
-    {
-    "memories": [
-        "The unexamined life is not worth living"
-    ]
+RETURNS:
+{
+"response": xxxxxxxxxxx, (the response to display to the user)
+memories: [xxx,xxx,xxx] (the list of memeories we derive)
 }
-
-------------------------------------------------------------------------
-PARAMS:
-query: the query string, likely the question from the frontend
-
-memories: the list of memories that we want to extract a subset from
-
-n: the number of memories you want in the subset
-
-************************************************************************
-
-GPT proxy doccumentation
-
-URL: API/GPT
-------------------------------------------------------------------------
-Postman example
-Request:
-    
-    Header: 
-        Content-Type: application/json
-
-    Body (as a raw string):
-    {
-            "maxtokens": 2,
-            "prompt": [{"role": "system", "content": "You are a helpful assistant."}, {"role": "user", "content": "hi"}]
-        }
-
-response:
-    {
-        "response": "Hello!"
-    }
-    
-------------------------------------------------------------------------
-PARAMS:
-maxtokens: the max tokens in the response from gpt, this is on their API. We simply forward this to their API. We can use this to limit costs
-
-prompt: the pormpt for GPT. this is similar to llama, as preston has said. See the example
-
+-------------------------------------------------------
 How to talk with ChatGPT 
-0. Connect to school vpn
 1. cd backend
-2. cd memory_search_ML_vector
+2. cd into one of the backends (any of the 2 directories)
 3. python3 manage.py runserver 0.0.0.0:3001
 4. put localhost:3001/API/fetchmemories into postman if you want memories, localhost:3001/API/getCompleationForCharacter for conversations
 5. create a new header of type "Content-Type" with value "application/json"
