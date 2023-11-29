@@ -148,7 +148,7 @@ export async function getCompleation(prompt, character) {
  */
 async function completion(prompt) {
   const requestBody = buildBody("", "");
-  const url = "localhost:3000/API/getCompleationForCharacter";
+  const url = "http://localhost:3000/API/getCompleationForCharacter";
 
   try {
       const response = await fetch(url, {
