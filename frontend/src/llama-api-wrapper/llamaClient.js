@@ -137,9 +137,10 @@ export async function getCompleation(prompt, character) {
     return response.choices[0].message.content
   }
 
+  // will need to be updated later when we get memories working
   function buildBody(prompt, character) {
 
-      return '{ "userQuestion" : "what makes life worth living", "memories" : ["The game of life is a game of everlasting learning", "The unexamined life is not worth living", "Never stop learning"], "character" : "Butler " }';
+      return { "userQuestion" : "what makes life worth living", "memories" : ["The game of life is a game of everlasting learning", "The unexamined life is not worth living", "Never stop learning"], "character" : "Butler " };
   }
 
 
@@ -151,12 +152,24 @@ export async function getCompleation(prompt, character) {
  * @returns {Response} a response from backend
  */
 async function completion(prompt) {
-    const requestBody = prompt
-    const requestOptions = {
-        method: 'POST',
-        headers: {'Content-Type': 'application/json'},
-        body: requestBody
-    };
-  
-  return await fetch("localhost:3000/API/getCompleationForCharacter",requestOptions)
+  const requestBody = buildBody("", "");
+  const url = "http://localhost:3001/API/getCompleationForCharacter";
+
+  try {
+      const response = await fetch(url, {
+          method: 'POST',
+          headers: {'Content-Type': 'application/json'},
+          body: JSON.stringify(requestBody),
+      });
+
+      if (!response.ok) {
+          throw new Error(`Request failed with status: ${response.status}`);
+      }
+
+      const data = await response.json();
+      return data;
+  } catch (error) {
+      console.error("Error during fetch:", error);
+      throw error; // Rethrow the error for further handling
+  }
 }
