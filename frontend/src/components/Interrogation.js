@@ -21,7 +21,6 @@ const Interrogation = ({name, messages, setconversationObj}) => {
      * we don't need string
      */
     async function handleButtonClick(string) {
-        console.log("clickeds")
         if (messages.length % 2 != 1) {
             // we have already sent llama a request, prevent the user from
             //making more
@@ -31,7 +30,6 @@ const Interrogation = ({name, messages, setconversationObj}) => {
         const value = temp.value
         temp.value = ""
         setconversationObj((prevObject) => {
-            console.log("in arrow")
             var obj = addMessage(prevObject, name, value)
             return obj
         })

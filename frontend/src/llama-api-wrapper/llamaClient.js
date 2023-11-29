@@ -136,7 +136,8 @@ export async function getCompleation(prompt, character) {
   function buildBody(prompt, character) {
 
       return { "userQuestion" : "what makes life worth living", "memories" : ["The game of life is a game of everlasting learning", "The unexamined life is not worth living", "Never stop learning"], "character" : "Butler " };
-  }
+      //return { "userQuestion" : "what makes life worth living", "memories" : ["The game of life is a game of everlasting learning"], "character" : "Butler " };
+    }
 
 
 
