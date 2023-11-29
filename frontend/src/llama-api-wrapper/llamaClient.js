@@ -143,28 +143,14 @@ export async function getCompleation(prompt, character) {
  * @param {String} prompt - a prompt for llama to provide a completion for.
  * @returns {Response} a response for the prompt.
  */
-// async function completion(prompt) {
-//   var prompt = buildPrompt(prompt)
-//     const requestBody = prompt
-//     const requestOptions = {
-//         method: 'POST',
-//         headers: {'Content-Type': 'application/json'},
-//         body: requestBody
-//     };
-
-//     return await fetch(apiUrl, requestOptions)
-// }
-
-
-
 async function completion(prompt) {
   var prompt = buildPrompt(prompt)
-  const completion = await openai.createCompletion({
-    model: "gpt-3.5-turbo",
-    messages: "How are you today?",
-    //temperature: 0,
-    max_tokens:1000
-    });
-    // console.log(completion.data.choices[0].text);
-    return completion
+    const requestBody = prompt
+    const requestOptions = {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: requestBody
+    };
+
+    return await fetch(apiUrl, requestOptions)
 }
