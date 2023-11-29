@@ -168,14 +168,3 @@ async function completion(prompt) {
     // console.log(completion.data.choices[0].text);
     return completion
 }
-
-
-
-
-// New GTP Stuff
-const OpenAI = require("openai");
-require("dotenv").config();
-
-const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY,
-});
