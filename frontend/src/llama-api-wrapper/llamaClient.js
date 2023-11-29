@@ -124,19 +124,14 @@ This is because the await keyword will wait for the fetchUserData() promise to s
 export async function getCompleation(prompt, character) {
   const characterList = ["Butler", "Lady Victoria", "Emily Greybrook", "Edward Greybrook"];
   // check if given character is valid
-  // if (!characterList.includes(character)) {
-  //   throw new Error("character given not valid!")
-  // }
+  if (!characterList.includes(character)) {
+    throw new Error("character given not valid!")
+  }
   
   return completion(prompt)
   }
 
-
-
-  export function parseResponse(response) {
-    return response.choices[0].message.content
-  }
-
+  
   // will need to be updated later when we get memories working
   function buildBody(prompt, character) {
 
@@ -153,7 +148,7 @@ export async function getCompleation(prompt, character) {
  */
 async function completion(prompt) {
   const requestBody = buildBody("", "");
-  const url = "http://localhost:3001/API/getCompleationForCharacter";
+  const url = "localhost:3000/API/getCompleationForCharacter";
 
   try {
       const response = await fetch(url, {

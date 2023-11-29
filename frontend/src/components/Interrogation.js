@@ -3,7 +3,7 @@ import Button from "./Button"
 import InterrogationDisplay from "./InterrogationDisplay"
 import {addMessage} from "./SuspectPanel"
 import styles from "../styles/Interrogation.css"
-import {getCompleation, parseResponse} from '../llama-api-wrapper/llamaClient';
+import {getCompleation} from '../llama-api-wrapper/llamaClient';
 
 /**
  * see gpt-doc.txt
@@ -35,10 +35,12 @@ const Interrogation = ({name, messages, setconversationObj}) => {
             var obj = addMessage(prevObject, name, value)
             return obj
         })
-        var response = await (await getCompleation(value, name)).json()
-        var parsedString = parseResponse(response)
+        var response = await getCompleation(value, name)
+        // we don't need to parse response, we can just directly get stuff from it
+        const responseText = response.response;
+        const parsedMemoriesArray = response.memories;
         setconversationObj((prevObject) => {
-            var obj = addMessage(prevObject, name, parsedString)
+            var obj = addMessage(prevObject, name, responseText)
             return obj
         })
             
