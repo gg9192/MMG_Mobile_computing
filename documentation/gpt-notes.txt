@@ -1,0 +1,5 @@
+When testing GPT, must be very precise with instructions to system. Sometimes will include new information, however if you ask it again if that is true they will fix themself. 
+DO NOT USE ANYTHING ABOVE 1 TEMPERATURE, VERY INCONSISTENT RESULTS.
+Cost per token is very very cheap. 
+
+Regarding memory retrieval prompt, sometimes might add a sentence in the summarization due to lengthy input.
