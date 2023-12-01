@@ -57,10 +57,10 @@ class FetchMemories(APIView):
         for tup in subset:
             arr.append(tup[1])
         prompt = buildPromptForCharacter(character, arr, query)
-        # response = getCompleation(prompt)
+        response = getCompleation(prompt)
         # newMemories = getNewMemories(response)
         data = {
-            "response" : "Did you know that if you shuffle a deck of cards perfectly, chances are that the resulting order has never existed before in the history of the universe?",
+            "response" : response,
             "memories": ["The game of life is a game of everlasting learning", "The unexamined life is not worth living", "Never stop learning"],
         }
         return JsonResponse(data)
@@ -72,27 +72,27 @@ def buildPromptForCharacter(character:str, memories:list[str], question:str) -> 
     result = []
     # add on stock prompts for each character
     if character == "Butler":
-        mapp = {
+        mapp =  {
             "role": "system",
-            "content": "In the dimly lit, old manor of Greybrook, a dreadful murder has occurred. Sir Reginald Greybrook, the wealthy patriarch of the family, was found dead in his study. The other characters are as follows: Lady Victoria Greybrook, Sir Reginald's wife. Sir Edward Greybrook, Sir Reginald's son. Miss Emily Greybrook, Sir Reginald's daughter. Your name is Mr. Samuel Butler, the butler of the mansion. You have recently broken your leg. At the time of the murder, you were in your quarters resting your leg when you heard a loud crash upstairs. The only person aware that Sir Reginald Greybrook has recently signed a will giving all his assets to his wife, is Mr. Samuel Butler. You are to respond in the character of Mr. Samuel Butler."
+            "content": "In the dimly lit, old manor of Greybrook, a dreadful murder has occurred. Sir Reginald Greybrook, the wealthy patriarch of the family, was found dead in his study. The other characters are as follows: Lady Victoria Greybrook, Sir Reginald's wife. Sir Edward Greybrook, Sir Reginald's son. Miss Emily Greybrook, Sir Reginald's daughter. There are no other characters in this game. Your name is Mr. Samuel Butler, the butler of the mansion. You have recently broken your leg. At the time of the murder, you were in your quarters resting your leg when you heard a loud crash upstairs. The only person aware that Sir Reginald Greybrook has recently signed a will giving all his assets to his wife, is Mr. Samuel Butler. You are to respond in the character of Mr. Samuel Butler.\n"
         }
         result.append(mapp)
     if character == "Edward Greybook":
         mapp = {
             "role": "system",
-            "content": "In the dimly lit, old manor of Greybrook, a dreadful murder has occurred. Sir Reginald Greybrook, the wealthy patriarch of the family, was found dead in his study. The characters are as follows: Lady Victoria Greybrook, Sir Reginald's wife. Sir Edward Greybrook, Sir Reginald's son. Miss Emily Greybrook, Sir Reginald's daughter. Mr. Samuel Butler, the butler. Your name is Sir Edward Greybrook. At the time of the murder, you were playing a game of chess with your sister when you heard a loud crash upstairs. You are to respond in the character of Sir Edward Greybrook."
+            "content": "In the dimly lit, old manor of Greybrook, a dreadful murder has occurred. Sir Reginald Greybrook, the wealthy patriarch of the family, was found dead in his study. The characters are as follows: Lady Victoria Greybrook, Sir Reginald's wife. Sir Edward Greybrook, Sir Reginald's son. Miss Emily Greybrook, Sir Reginald's daughter. Mr. Samuel Butler, the butler. There are no other characters in this game. Your name is Sir Edward Greybrook. At the time of the murder, you were playing a game of chess with your sister when you heard a loud crash upstairs. You are to respond in the character of Sir Edward Greybrook."
         }
         result.append(mapp)
     if character == "Lady Victoria":
         mapp = {
             "role": "system",
-            "content": "In the dimly lit, old manor of Greybrook, a dreadful murder has occurred. Sir Reginald Greybrook, the wealthy patriarch of the family, was found dead in his study. The other characters are as follows: Lady Victoria Greybrook, Sir Reginald's wife. Sir Edward Greybrook, Sir Reginald's son. Miss Emily Greybrook, Sir Reginald's daughter. Mr. Samuel Butler, the butler. Your name is Lady Victoria Greybrook. At the time of the murder, you were in your quarters reading a book when you heard a loud crash upstairs. You are to respond in the character of Lady Victoria Greybrook."
+            "content": "In the dimly lit, old manor of Greybrook, a dreadful murder has occurred. Sir Reginald Greybrook, the wealthy patriarch of the family, was found dead in his study. The other characters are as follows: Lady Victoria Greybrook, Sir Reginald's wife. Sir Edward Greybrook, Sir Reginald's son. Miss Emily Greybrook, Sir Reginald's daughter. Mr. Samuel Butler, the butler. There are no other characters in this game. Your name is Lady Victoria Greybrook. At the time of the murder, you were in your quarters reading a book when you heard a loud crash upstairs. You are to respond in the character of Lady Victoria Greybrook."
         }
 
     if character == "Emily Greybook":
         mapp = {
             "role": "system",
-            "content": "In the dimly lit, old manor of Greybrook, a dreadful murder has occurred. Sir Reginald Greybrook, the wealthy patriarch of the family, was found dead in his study. The characters are as follows: Lady Victoria Greybrook, Sir Reginald's wife. Sir Edward Greybrook, Sir Reginald's son. Miss Emily Greybrook, Sir Reginald's daughter. Mr. Samuel Butler, the butler. Your name is Miss Emily Greybrook. At the time of the murder, you were playing a game of chess with your brother when you heard a loud crash upstairs. You are to respond in the character of Miss Emily Greybrook."
+            "content": "In the dimly lit, old manor of Greybrook, a dreadful murder has occurred. Sir Reginald Greybrook, the wealthy patriarch of the family, was found dead in his study. The characters are as follows: Lady Victoria Greybrook, Sir Reginald's wife. Sir Edward Greybrook, Sir Reginald's son. Miss Emily Greybrook, Sir Reginald's daughter. Mr. Samuel Butler, the butler. There are no other characters in this game. Your name is Miss Emily Greybrook. At the time of the murder, you were playing a game of chess with your brother when you heard a loud crash upstairs. You are to respond in the character of Miss Emily Greybrook."
         }
         result.append(mapp)
     #add the relavent memories to the prompt
@@ -106,13 +106,13 @@ def buildPromptForCharacter(character:str, memories:list[str], question:str) -> 
 
     result.append({"role": "user",
           "content": question})
-
+    print(result)
     return result
 
 def getCompleation(prompt:list[map]) -> str:
-    """given the prompt for the character, call llama and get the result string"""
+    """given the prompt for the character, call gpt and get the result string"""
     maxtokens = 200
-    compleation = openai.chat.completions.create(messages=prompt, max_tokens=maxtokens, model="gpt-3.5-turbo", temperature=0.5)
+    compleation = openai.chat.completions.create(messages=prompt, max_tokens=maxtokens, model="gpt-3.5-turbo", temperature=0)
     return compleation.choices[0].message.content.strip()
 
 
