@@ -25,11 +25,11 @@ class GetCompleationForCharacter(APIView):
         for tup in subset:
             arr.append(tup[1])
         prompt = buildPromptForCharacter(character, arr, query)
-        # response = getCompleation(prompt)
-        # newMemories = getNewMemories(response)
+        response = getCompleation(prompt)
+        newMemories = getNewMemories(response)
         data = {
-            "response" : "response",
-            "memories": ["The game of life is a game of everlasting learning", "The unexamined life is not worth living", "Never stop learning"],
+            "response" : response,
+            "memories": [i for i in newMemories if i != ""]
         }
         return JsonResponse(data)
         
@@ -87,14 +87,23 @@ def getCompleation(prompt:list[str]) -> str:
     return compleation.choices[0].message.content.strip()
 
 
-def getNewMemories(response:str) -> str:
+def getNewMemories(response:str) -> list[str]:
     """ 
     Given the response from GPT, use a prebuilt prompt to get relavent memories
     """
-    messages = []
+    messages = [
+        {
+      "role": "system",
+      "content": "You are to summarize key points in a message in 1-2 sentences. Be as brief and succinct as possible. Please write in the second person point of view whenever responding. \nExamples: \nYou express concern about the current state of the world and the impact it is having on your mental health, specifically feeling overwhelmed and hopeless.\nYou are sad about your father's passing. You haven't eaten in 2 days."
+    }]
+    temp = {
+        "role": "user",
+        "content": response
+    }
+    messages.append(temp)
+
     maxtokens = 200
     compleation = openai.chat.completions.create(messages=messages, max_tokens=maxtokens, model="gpt-3.5-turbo")
     response = compleation.choices[0].message.content.strip()
-    #parse the response somehow
 
-    return None
+    return response.split(".")
