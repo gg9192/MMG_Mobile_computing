@@ -3,3 +3,24 @@ DO NOT USE ANYTHING ABOVE 1 TEMPERATURE, VERY INCONSISTENT RESULTS.
 Cost per token is very very cheap. 
 
 Regarding memory retrieval prompt, sometimes might add a sentence in the summarization due to lengthy input.
+
+Here are the links to the prompts we used for each character, as well as the memory retrieval prompt.
+NOTE - you must have an openAI account to open these links.
+
+BUTLER
+https://platform.openai.com/playground/p/5q1FAulCXKKRMOBowB4tOwAH?model=gpt-3.5-turbo&mode=chat
+
+WIFE
+https://platform.openai.com/playground/p/Amqdx64ik9VDGDHBgMHj2Bmw?model=gpt-3.5-turbo&mode=chat
+
+SON
+https://platform.openai.com/playground/p/qg8B7oZ3BsdW9uEShHKtzRDO?model=gpt-3.5-turbo&mode=chat
+
+DAUGHTER
+https://platform.openai.com/playground/p/PAl1BMQXAqEZdMM3bZhtnm2f?model=gpt-3.5-turbo&mode=chat
+
+MEMORY PROMPT TESTING
+https://platform.openai.com/playground/p/Zv5zOBTrNnoP7NHv4vUuaEeL?model=gpt-3.5-turbo&mode=chat
+
+FINAL MEMORY PROMPT
+https://platform.openai.com/playground/p/RtpFtFE9vqgbrnbI5oOzeXul?model=gpt-3.5-turbo&mode=chat
