@@ -64,14 +64,16 @@ def buildPromptForCharacter(character:str, memories:list[str], question:str) -> 
         }
         result.append(mapp)
     #add the relavent memories to the prompt
-    memstr = "Here are some additional memories for the character: "
-    for mem in memories:
-        memstr += mem + "; "
-    memmap = {
-        "role": "system",
-        "content": memstr
-    }
-    result.append(memmap)
+    if len(memories) != 0:
+        #if we have memories
+        memstr = "Here are some additional memories for the character: "
+        for mem in memories:
+            memstr += mem + "; "
+        memmap = {
+            "role": "system",
+            "content": memstr
+        }
+        result.append(memmap)
     result.append({"role": "user",
           "content": question})
     print(result)

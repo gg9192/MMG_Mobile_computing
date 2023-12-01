@@ -95,15 +95,16 @@ def buildPromptForCharacter(character:str, memories:list[str], question:str) -> 
             "content": "In the dimly lit, old manor of Greybrook, a dreadful murder has occurred. Sir Reginald Greybrook, the wealthy patriarch of the family, was found dead in his study. The characters are as follows: Lady Victoria Greybrook, Sir Reginald's wife. Sir Edward Greybrook, Sir Reginald's son. Miss Emily Greybrook, Sir Reginald's daughter. Mr. Samuel Butler, the butler. There are no other characters in this game. Your name is Miss Emily Greybrook. At the time of the murder, you were playing a game of chess with your brother when you heard a loud crash upstairs. You are to respond in the character of Miss Emily Greybrook."
         }
         result.append(mapp)
-    #add the relavent memories to the prompt
-    memstr = "Here are some additional memories for the character: "
-    for mem in memories:
-        memstr += mem + "; "
-    memmap = {
-        "role": "system",
-        "content": memstr
-    }
-
+    if len(memories) != 0:
+        #if we have memories
+        memstr = "Here are some additional memories for the character: "
+        for mem in memories:
+            memstr += mem + "; "
+        memmap = {
+            "role": "system",
+            "content": memstr
+        }
+        result.append(memmap)
     result.append({"role": "user",
           "content": question})
     print(result)
