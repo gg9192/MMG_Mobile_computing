@@ -1,5 +1,10 @@
 This is the code for the backend
 
+==========================================
+in the .env file, Use the following string:
+OPENAI_API_KEY = "${Your key here}"
+==========================================
+For more info, see ENV.png
 
 How to talk with ChatGPT 
 1. cd backend
