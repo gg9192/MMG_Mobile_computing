@@ -121,24 +121,13 @@ This is because the await keyword will wait for the fetchUserData() promise to s
  * gets the compleation for the given character
  * Returns a promise
 */
-export async function getCompleation(prompt, character) {
-  const characterList = ["Butler", "Lady Victoria", "Emily Greybrook", "Edward Greybrook"];
-  // check if given character is valid
-  if (!characterList.includes(character)) {
-    throw new Error("character given not valid!")
-  }
+export async function getCompleation(userInput, memories, character) {
+  //const characterList = ["Butler", "Lady Victoria", "Emily Greybrook", "Edward Greybrook"];
+  const requestBody = { "userQuestion" : userInput, "memories" : memories, "character" : character};
+  //const requestBody = { "userQuestion" : userInput, "memories" : ["The game of life is a game of everlasting learning", "The unexamined life is not worth living", "Never stop learning"], "character" : "Butler " };
   
-  return completion(prompt)
+  return completion(requestBody)
   }
-
-  
-  // will need to be updated later when we get memories working
-  function buildBody(prompt, character) {
-
-      return { "userQuestion" : "what makes life worth living", "memories" : ["The game of life is a game of everlasting learning", "The unexamined life is not worth living", "Never stop learning"], "character" : "Butler " };
-      //return { "userQuestion" : "what makes life worth living", "memories" : ["The game of life is a game of everlasting learning"], "character" : "Butler " };
-    }
-
 
 
 /**
@@ -147,8 +136,7 @@ export async function getCompleation(prompt, character) {
  * @param {String} prompt - a prompt for backend to send to .
  * @returns {Response} a response from backend
  */
-async function completion(prompt) {
-  const requestBody = buildBody("", "");
+async function completion(requestBody) {
   const url = "http://localhost:3000/API/getCompleationForCharacter";
 
   try {

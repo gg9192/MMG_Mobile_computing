@@ -5,6 +5,14 @@ import {addMessage} from "./SuspectPanel"
 import styles from "../styles/Interrogation.css"
 import {getCompleation} from '../llama-api-wrapper/llamaClient';
 
+// global-ish
+var globalButlerMemories = [];
+var globalVictoriaMemories = [];
+var globalEdwardMemories = [];
+var globalEmilyMemories = [];
+
+
+
 /**
  * see gpt-doc.txt
  * @prop {string} name the name of the suspect
@@ -33,10 +41,11 @@ const Interrogation = ({name, messages, setconversationObj}) => {
             var obj = addMessage(prevObject, name, value)
             return obj
         })
-        var response = await getCompleation(value, name)
+        var response = await getCompleation(value, getMemories(name), name)
         // we don't need to parse response, we can just directly get stuff from it
         const responseText = response.response;
         const parsedMemoriesArray = response.memories;
+        saveMemories(parsedMemoriesArray, name) // save new memories
         setconversationObj((prevObject) => {
             var obj = addMessage(prevObject, name, responseText)
             return obj
@@ -44,7 +53,36 @@ const Interrogation = ({name, messages, setconversationObj}) => {
             
     }
 
+    // Maybe these should be in their own file idk javasctipt very well
+    function saveMemories(mems, character){
+        if (character == "Butler"){
+            globalButlerMemories.concat(mems);
+        } 
+        if (character == "Lady Victoria"){
+            globalVictoriaMemories.concat(mems);
+        } 
+        if (character == "Emily Greybrook"){
+            globalEmilyMemories.concat(mems);
+        } 
+        if (character == "Edward Greybrook"){
+            globalEdwardMemories.concat(mems);
+        } 
+    }
     
+    function getMemories(character){
+        if (character == "Butler"){
+            return globalButlerMemories;
+        } else if (character == "Lady Victoria"){
+            return globalVictoriaMemories;
+        } else if (character == "Emily Greybrook"){
+            return globalEmilyMemories;
+        } else if (character == "Edward Greybrook"){
+            return globalEdwardMemories;
+        } else {
+            throw new Error("character given not valid!");
+        }
+    }
+
         
     return (
         
