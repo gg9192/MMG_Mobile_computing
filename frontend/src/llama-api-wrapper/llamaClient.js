@@ -67,25 +67,6 @@ profile picture
 can you just call it like a normal function?
 View other drafts
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 Yes, you can call an async function like a normal function. However, if you do so, the function will not wait for the asynchronous operation to complete before returning. This means that the function will return a promise, and you will need to use the await keyword to wait for the promise to settle.
 
 For example, the following code will call the fetchUserData() function like a normal function:
@@ -122,10 +103,7 @@ This is because the await keyword will wait for the fetchUserData() promise to s
  * Returns a promise
 */
 export async function getCompleation(userInput, memories, character) {
-  //const characterList = ["Butler", "Lady Victoria", "Emily Greybrook", "Edward Greybrook"];
   const requestBody = { "userQuestion" : userInput, "memories" : memories, "character" : character};
-  //const requestBody = { "userQuestion" : userInput, "memories" : ["The game of life is a game of everlasting learning", "The unexamined life is not worth living", "Never stop learning"], "character" : "Butler " };
-  console.log(requestBody);
   return completion(requestBody);
   }
 

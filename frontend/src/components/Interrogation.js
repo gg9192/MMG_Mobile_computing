@@ -4,13 +4,7 @@ import InterrogationDisplay from "./InterrogationDisplay"
 import {addMessage} from "./SuspectPanel"
 import styles from "../styles/Interrogation.css"
 import {getCompleation} from '../llama-api-wrapper/llamaClient';
-
-// global-ish
-global.butlerMemories = [];
-global.victoriaMemories = [];
-global.edwardMemories = [];
-global.emilyMemories = [];
-
+import {saveMemories, getMemories} from "../cognition/memories";
 
 
 /**
@@ -45,51 +39,12 @@ const Interrogation = ({name, messages, setconversationObj}) => {
         // we don't need to parse response, we can just directly get stuff from it
         const responseText = response.response;
         const parsedMemoriesArray = response.memories;
-        console.log("parsed mem array = " + parsedMemoriesArray);
         saveMemories(parsedMemoriesArray, name) // save new memories
         setconversationObj((prevObject) => {
             var obj = addMessage(prevObject, name, responseText)
             return obj
         })
             
-    }
-
-    // Maybe these should be in their own file idk javasctipt very well
-    function saveMemories(mems, character){
-        if (character == "Butler"){
-            for (const m of mems){
-                global.butlerMemories.push(m);
-            }
-        } 
-        if (character == "Lady Victoria"){
-            for (const m of mems){
-                global.victoriaMemories.push(m);
-            }
-        } 
-        if (character == "Emily Greybrook"){
-            for (const m of mems){
-                global.emilyMemories.push(m);
-            }
-        } 
-        if (character == "Edward Greybrook"){
-            for (const m of mems){
-                global.edwardMemories.push(mems);
-            }
-        } 
-    }
-    
-    function getMemories(character){
-        if (character == "Butler"){
-            return global.butlerMemories;
-        } else if (character == "Lady Victoria"){
-            return global.victoriaMemories;
-        } else if (character == "Emily Greybrook"){
-            return global.emilyMemories;
-        } else if (character == "Edward Greybrook"){
-            return global.edwardMemories;
-        } else {
-            throw new Error("character given not valid!");
-        }
     }
 
         
