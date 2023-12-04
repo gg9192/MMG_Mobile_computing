@@ -6,10 +6,10 @@ import styles from "../styles/Interrogation.css"
 import {getCompleation} from '../llama-api-wrapper/llamaClient';
 
 // global-ish
-var globalButlerMemories = [];
-var globalVictoriaMemories = [];
-var globalEdwardMemories = [];
-var globalEmilyMemories = [];
+global.butlerMemories = [];
+global.victoriaMemories = [];
+global.edwardMemories = [];
+global.emilyMemories = [];
 
 
 
@@ -45,6 +45,7 @@ const Interrogation = ({name, messages, setconversationObj}) => {
         // we don't need to parse response, we can just directly get stuff from it
         const responseText = response.response;
         const parsedMemoriesArray = response.memories;
+        console.log("parsed mem array = " + parsedMemoriesArray);
         saveMemories(parsedMemoriesArray, name) // save new memories
         setconversationObj((prevObject) => {
             var obj = addMessage(prevObject, name, responseText)
@@ -56,28 +57,36 @@ const Interrogation = ({name, messages, setconversationObj}) => {
     // Maybe these should be in their own file idk javasctipt very well
     function saveMemories(mems, character){
         if (character == "Butler"){
-            globalButlerMemories.concat(mems);
+            for (const m of mems){
+                global.butlerMemories.push(m);
+            }
         } 
         if (character == "Lady Victoria"){
-            globalVictoriaMemories.concat(mems);
+            for (const m of mems){
+                global.victoriaMemories.push(m);
+            }
         } 
         if (character == "Emily Greybrook"){
-            globalEmilyMemories.concat(mems);
+            for (const m of mems){
+                global.emilyMemories.push(m);
+            }
         } 
         if (character == "Edward Greybrook"){
-            globalEdwardMemories.concat(mems);
+            for (const m of mems){
+                global.edwardMemories.push(mems);
+            }
         } 
     }
     
     function getMemories(character){
         if (character == "Butler"){
-            return globalButlerMemories;
+            return global.butlerMemories;
         } else if (character == "Lady Victoria"){
-            return globalVictoriaMemories;
+            return global.victoriaMemories;
         } else if (character == "Emily Greybrook"){
-            return globalEmilyMemories;
+            return global.emilyMemories;
         } else if (character == "Edward Greybrook"){
-            return globalEdwardMemories;
+            return global.edwardMemories;
         } else {
             throw new Error("character given not valid!");
         }

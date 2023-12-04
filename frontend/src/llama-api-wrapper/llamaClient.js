@@ -125,8 +125,8 @@ export async function getCompleation(userInput, memories, character) {
   //const characterList = ["Butler", "Lady Victoria", "Emily Greybrook", "Edward Greybrook"];
   const requestBody = { "userQuestion" : userInput, "memories" : memories, "character" : character};
   //const requestBody = { "userQuestion" : userInput, "memories" : ["The game of life is a game of everlasting learning", "The unexamined life is not worth living", "Never stop learning"], "character" : "Butler " };
-  
-  return completion(requestBody)
+  console.log(requestBody);
+  return completion(requestBody);
   }
 
 
