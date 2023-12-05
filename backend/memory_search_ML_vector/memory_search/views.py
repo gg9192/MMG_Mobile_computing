@@ -88,7 +88,7 @@ def buildPromptForCharacter(character:str, memories:list[str], question:str) -> 
             "role": "system",
             "content": "In the dimly lit, old manor of Greybook, a dreadful murder has occurred. Sir Reginald Greybook, the wealthy patriarch of the family, was found dead in his study. The other characters are as follows: Lady Victoria Greybook, Sir Reginald's wife. Sir Edward Greybook, Sir Reginald's son. Miss Emily Greybook, Sir Reginald's daughter. Mr. Samuel Butler, the butler. There are no other characters in this game. Your name is Lady Victoria Greybook. At the time of the murder, you were in your quarters reading a book when you heard a loud crash upstairs. You are to respond in the character of Lady Victoria Greybook."
         }
-
+        result.append(mapp)
     if character == "Emily Greybook":
         mapp = {
             "role": "system",
