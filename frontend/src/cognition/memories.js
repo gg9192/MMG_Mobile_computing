@@ -1,7 +1,7 @@
 global.butlerMemories = [];
 global.victoriaMemories = [];
-global.edwardMemories = [];
 global.emilyMemories = [];
+global.edwardMemories = [];
 
 export function saveMemories(mems, character){
     if (character == "Butler"){
@@ -21,7 +21,7 @@ export function saveMemories(mems, character){
     } 
     if (character == "Edward Greybook"){
         for (const m of mems){
-            global.edwardMemories.push(mems);
+            global.edwardMemories.push(m);
         }
     } 
 }
