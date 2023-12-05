@@ -67,25 +67,6 @@ profile picture
 can you just call it like a normal function?
 View other drafts
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 Yes, you can call an async function like a normal function. However, if you do so, the function will not wait for the asynchronous operation to complete before returning. This means that the function will return a promise, and you will need to use the await keyword to wait for the promise to settle.
 
 For example, the following code will call the fetchUserData() function like a normal function:
@@ -121,61 +102,38 @@ This is because the await keyword will wait for the fetchUserData() promise to s
  * gets the compleation for the given character
  * Returns a promise
 */
-export async function getCompleation(prompt, character) {
-  if (character == "Butler") {}
-  else if (character == "Lady Victoria") {}
-  else if (character == "Emily Greybrook") {}
-  else if (character == "Edward Greybrook") {}
-  return completion(prompt)
+export async function getCompleation(userInput, memories, character) {
+  const requestBody = { "userQuestion" : userInput, "memories" : memories, "character" : character};
+  return completion(requestBody);
   }
 
-  export function parseResponse(response) {
-    return response.choices[0].message.content
-  }
-
-  function buildPrompt(prompt) {
-      return '{"messages": [{"role": "system", "content": "You are a helpful assistant."},{"role": "user", "content": "' + prompt + '"}], "temperature": 1}';
-  }
 
 /**
- * Attempts to send a prompt to llama for completion
+ * Attempts to send a prompt to backend for completion
  * 
- * @param {String} prompt - a prompt for llama to provide a completion for.
- * @returns {Response} a response for the prompt.
+ * @param {String} prompt - a prompt for backend to send to .
+ * @returns {Response} a response from backend
  */
-// async function completion(prompt) {
-//   var prompt = buildPrompt(prompt)
-//     const requestBody = prompt
-//     const requestOptions = {
-//         method: 'POST',
-//         headers: {'Content-Type': 'application/json'},
-//         body: requestBody
-//     };
 
-//     return await fetch(apiUrl, requestOptions)
-// }
+async function completion(requestBody) {
+  const url = "http://localhost:3000/API/getCompleationForCharacter";
 
+  try {
+      const response = await fetch(url, {
+          method: 'POST',
+          headers: {'Content-Type': 'application/json'},
+          body: JSON.stringify(requestBody),
+      });
 
+      if (!response.ok) {
+          throw new Error(`Request failed with status: ${response.status}`);
+      }
 
-async function completion(prompt) {
-  var prompt = buildPrompt(prompt)
-  const completion = await openai.createCompletion({
-    model: "gpt-3.5-turbo",
-    messages: "How are you today?",
-    //temperature: 0,
-    max_tokens:1000
-    });
-    // console.log(completion.data.choices[0].text);
-    return completion
+      const data = await response.json();
+      return data;
+  } catch (error) {
+      console.error("Error during fetch:", error);
+      throw error; // Rethrow the error for further handling
+  }
 }
 
-
-
-
-// New GTP Stuff
-const OpenAI = require("openai");
-require("dotenv").config();
-
-const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY,
-});

@@ -1,19 +1,11 @@
-This is the new API that our backend will follow. This was discussed durring our meeting
+This is the code for the backend
 
-URL: localhost:3001/API/getCompleationForCharacter
-Post request
-example body
-{
-            "userQuestion" : "what makes life worth living", (the question from the user)
-            "memories" : ["The game of life is a game of everlasting learning", "The unexamined life is not worth living", "Never stop learning"], (the memories that are associated with the given character)
-            "character" : "Butler   " (the character *needs to follow english conventions*)
-        }
-RETURNS:
-{
-"response": xxxxxxxxxxx, (the response to display to the user)
-memories: [xxx,xxx,xxx] (the list of memeories we derive)
-}
--------------------------------------------------------
+==========================================
+in the .env file, Use the following string:
+OPENAI_API_KEY = "${Your key here}"
+==========================================
+For more info, see ENV.png
+
 How to talk with ChatGPT 
 1. cd backend
 2. cd into one of the backends (any of the 2 directories)

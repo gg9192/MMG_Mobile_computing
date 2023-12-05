@@ -15,14 +15,14 @@ function buildInitialState() {
         "information or insight that may aid in unraveling this perplexing murder."
     ]
     obj.EdwardGreybook = [
-        "Welcome to Ravenscroft Manor. I am Edward Greybrook, a connoisseur of strategy and an aficionado of the ancient game of chess. " + 
+        "Welcome to Ravenscroft Manor. I am Edward Greybook, a connoisseur of strategy and an aficionado of the ancient game of chess. " + 
         "Within these grand halls, I navigate life's complexities much like the intricate maneuvers of a well-played game. My mind, a " + 
         "canvas for meticulous planning, seeks the beauty and precision found in every move. Should you wish to uncover the mysteries that " +
         "linger within these walls, perhaps my insights and strategic prowess shagill aid your quest. But beware, for the secrets of this " + 
         "manor run deep, and not all moves on this chessboard lead to victory."             
     ]
     obj.EmilyGreybook = [
-        "Greetings, dear player. I am Emily Greybrook, the daughter of Ravenscroft Manor. Within these sprawling grounds, I embody the essence " + 
+        "Greetings, dear player. I am Emily Greybook, the daughter of Ravenscroft Manor. Within these sprawling grounds, I embody the essence " + 
         "of grace and poise that befits the estate's lineage. My attire, a testament to timeless elegance, mirrors the aristocratic heritage I " + 
         "represent. Adorned with raven hair cascading like a waterfall, I hold within me an enigmatic array of secrets waiting to be " + 
         "unveiled amidst the mysteries that linger within these grand walls."
@@ -198,7 +198,7 @@ const SuspectPannel = () => {
                         setMode("Emily Greybook")
                     }}>
                         <SuspectCard imagePath={"./Emily-Greybook.png"}  name="Emily Greybook (daughter)" description="In the grand 
-                        manor of Ravenscroft, Emily Greybrook assumes her role as the daughter of the estate, a vision of grace and 
+                        manor of Ravenscroft, Emily Greybook assumes her role as the daughter of the estate, a vision of grace and 
                         poise amidst the sprawling grounds. Her attire reflects the timeless elegance of the aristocracy, her raven 
                         hair cascading like a waterfall of secrets." ></SuspectCard>
                     </div>
@@ -220,7 +220,7 @@ const SuspectPannel = () => {
                         setMode("Edward Greybook")
                     }}>
                         <SuspectCard imagePath={"./Edward-Greybook.png"} name="Edward Greybook (Son)" description="In the grand 
-                        manor of Ravenscroft, Edward Greybrook stands as the enigmatic son, a master of strategy who enjoys the ancient 
+                        manor of Ravenscroft, Edward Greybook stands as the enigmatic son, a master of strategy who enjoys the ancient 
                         game of chess. With his sharp intellect and a penchant for meticulous planning, he is as enigmatic as the 
                         intricate chessboard he often studies. "></SuspectCard>
                     </div>
