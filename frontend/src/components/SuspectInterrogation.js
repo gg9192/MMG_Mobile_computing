@@ -90,7 +90,7 @@ const SuspectInterrogation = ({name, setMode, messages, setconversationObj}) => 
                     </div>
                 </div>
                 <div style={{width: "60%", display: "flex", flexDirection: "row", justifyContent: "left", alignItems: "center"}}>
-                    <Interrogation name="Edward Greybook" messages={messages} setconversationObj={setconversationObj}></Interrogation>    
+                    <Interrogation name="Lady Victoria" messages={messages} setconversationObj={setconversationObj}></Interrogation>    
                 </div>  
             </div>)
     }

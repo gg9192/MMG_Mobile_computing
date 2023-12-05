@@ -3,7 +3,9 @@ import Button from "./Button"
 import InterrogationDisplay from "./InterrogationDisplay"
 import {addMessage} from "./SuspectPanel"
 import styles from "../styles/Interrogation.css"
-import {getCompleation, parseResponse} from '../llama-api-wrapper/llamaClient';
+import {getCompleation} from '../llama-api-wrapper/llamaClient';
+import {saveMemories, getMemories} from "../cognition/memories";
+
 
 /**
  * see gpt-doc.txt
@@ -21,7 +23,6 @@ const Interrogation = ({name, messages, setconversationObj}) => {
      * we don't need string
      */
     async function handleButtonClick(string) {
-        console.log("clickeds")
         if (messages.length % 2 != 1) {
             // we have already sent llama a request, prevent the user from
             //making more
@@ -31,20 +32,21 @@ const Interrogation = ({name, messages, setconversationObj}) => {
         const value = temp.value
         temp.value = ""
         setconversationObj((prevObject) => {
-            console.log("in arrow")
             var obj = addMessage(prevObject, name, value)
             return obj
         })
-        var response = await (await getCompleation(value, name)).json()
-        var parsedString = parseResponse(response)
+        var response = await getCompleation(value, getMemories(name), name)
+        // we don't need to parse response, we can just directly get stuff from it
+        const responseText = response.response;
+        const parsedMemoriesArray = response.memories;
+        saveMemories(parsedMemoriesArray, name) // save new memories
         setconversationObj((prevObject) => {
-            var obj = addMessage(prevObject, name, parsedString)
+            var obj = addMessage(prevObject, name, responseText)
             return obj
         })
             
     }
 
-    
         
     return (
         
