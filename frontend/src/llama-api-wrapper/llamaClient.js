@@ -114,6 +114,7 @@ export async function getCompleation(userInput, memories, character) {
  * @param {String} prompt - a prompt for backend to send to .
  * @returns {Response} a response from backend
  */
+
 async function completion(requestBody) {
   const url = "http://localhost:3000/API/getCompleationForCharacter";
 
@@ -135,3 +136,4 @@ async function completion(requestBody) {
       throw error; // Rethrow the error for further handling
   }
 }
+
