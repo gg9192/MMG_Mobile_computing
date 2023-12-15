@@ -8,7 +8,7 @@ import SuspectInterrogation from "./SuspectInterrogation";
 function buildInitialState() {
     const obj = new Object()
     obj.Butler = [
-        "LLAMA2: Greetings, Detective. I am Mr. Montgomery, the devoted butler of Ravenscroft " + 
+        "Butler: Greetings, Detective. I am Mr. Montgomery, the devoted butler of Ravenscroft " + 
         "Manor. It is my utmost pleasure to assist you in any way possible as you navigate " + 
         "the intricacies of this unfortunate situation. I must admit, the tranquility of the manor " + 
         "has been shattered by this mysterious event. I am at your service to provide any " + 

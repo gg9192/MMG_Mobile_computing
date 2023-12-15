@@ -5,7 +5,7 @@ import Button from "./Button";
     @prop {string} name, the name of the suspect
     @prop {function} setMode the setMode of the suspect panel
     @prop {function} setconversationObj the setconversationObj of the suspect panel
-    This is how we communicate with lamma. This is also where we make API calls to LLAMA
+    This is how we communicate with lamma. This is also where we make API calls to GPT
     for each character. This is where the magic happens boys
     @returns the component used to interrogate the suspect
 */

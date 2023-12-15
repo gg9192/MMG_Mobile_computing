@@ -3,7 +3,7 @@ import Button from "./Button"
 import InterrogationDisplay from "./InterrogationDisplay"
 import {addMessage} from "./SuspectPanel"
 import styles from "../styles/Interrogation.css"
-import {getCompleation} from '../llama-api-wrapper/llamaClient';
+import {getCompleation} from '../gpt-api-wrapper/GPTClient';
 import {saveMemories, getMemories} from "../cognition/memories";
 
 
@@ -24,7 +24,7 @@ const Interrogation = ({name, messages, setconversationObj}) => {
      */
     async function handleButtonClick(string) {
         if (messages.length % 2 != 1) {
-            // we have already sent llama a request, prevent the user from
+            // we have already sent gpt a request, prevent the user from
             //making more
             return
         }
